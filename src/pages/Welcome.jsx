@@ -3,11 +3,15 @@ import styled from "styled-components";
 
 function WelcomePage() {
   return (
-    <Container>
+    <Container className="page">
       <h1>Welcome Rocketeer !</h1>
-      <button>Start Questionnaire</button>
-      <Link to="/#">Submitted Applications</Link>
-      <img src="/images/rocketman.png" alt="" />
+      <Link id="toPersonalInformation" to="/personal-information">
+        <button>Start Questionnaire</button>
+      </Link>
+      <Link id="toApplications" to="/applications">
+        Submitted Applications
+      </Link>
+      <img src="/images/rocketman.png" alt="rocketman" />
     </Container>
   );
 }
@@ -15,7 +19,6 @@ function WelcomePage() {
 export default WelcomePage;
 
 const Container = styled.div`
-  min-height: 100vh;
   background: url("/images/bgStars.png") black center no-repeat;
   overflow: hidden;
 
@@ -32,23 +35,32 @@ const Container = styled.div`
     font-size: 96px;
     line-height: 119px;
   }
-  button {
-    width: 395px;
-    height: 79px;
-    background-color: var(--redberryRed);
-    border-radius: 50px;
-    margin-bottom: 18px;
-
-    color: #fff;
-    font-family: Montserrat;
-    font-size: 24px;
-    line-height: 29px;
-  }
   a {
     font-family: Montserrat;
     font-size: 24px;
     line-height: 29px;
     color: #fff;
+    cursor: pointer;
+    z-index: 10;
+  }
+  #toPersonalInformation {
+    margin-bottom: 18px;
+
+    button {
+      width: 395px;
+      height: 79px;
+      background-color: var(--redberryRed);
+      border-radius: 50px;
+
+      color: #fff;
+      font-family: Montserrat;
+      font-size: 24px;
+      line-height: 29px;
+      cursor: pointer;
+    }
+  }
+  #toApplications {
+    text-decoration: underline;
   }
   img {
     width: 409.92px;

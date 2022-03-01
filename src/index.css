@@ -19,7 +19,44 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+.page {
+  width: 100%;
+  min-height: 100vh;
+}
+.page > .lightSide {
+  width: 50%;
+  padding: 65px 0;
+}
+.page > .darkSide {
+  width: 50%;
+  padding: 65px 0;
+  background-image: var(--primaryBg);
+}
+
+.title {
+  width: 788px;
+  margin: 0;
+  text-align: center;
+
+  color: var(--redberryRed);
+  font-family: Rowdies;
+  font-weight: 400;
+  font-size: 64px;
+  line-height: 79px;
+}
+
+.input {
+  width: 455px;
+  height: 54px;
+  padding: 15px 20px 15px 55px;
+  border: 1px solid var(--primaryStroke);
+
+  color: #454545;
+  font-family: Montserrat;
+  font-style: italic;
+  font-size: 14px;
+  line-height: 17px;
+}
+.input:not(:last-of-type) {
+  margin-bottom: 35px;
 }
