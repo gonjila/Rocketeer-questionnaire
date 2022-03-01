@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import DarkComponent from "../components/dark-side";
+import DotsOfPages from "../components/page-dots";
 
 function PersonalInformationPage() {
   return (
@@ -17,7 +18,7 @@ function PersonalInformationPage() {
           />
           {/* <button>submit</button> */}
         </form>
-        <div>dots</div>
+        <DotsOfPages />
       </div>
       <div className="darkSide">
         <DarkComponent title="Redberry Origins">

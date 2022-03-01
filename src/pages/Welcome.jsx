@@ -51,6 +51,7 @@ const Container = styled.div`
       height: 79px;
       background-color: var(--redberryRed);
       border-radius: 50px;
+      border: none;
 
       color: #fff;
       font-family: Montserrat;
