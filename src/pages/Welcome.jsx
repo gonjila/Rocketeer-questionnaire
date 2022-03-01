@@ -6,7 +6,7 @@ function WelcomePage() {
     <Container className="page">
       <h1>Welcome Rocketeer !</h1>
       <Link id="toPersonalInformation" to="/personal-information">
-        <button>Start Questionnaire</button>
+        <button className="redberryBtn">Start Questionnaire</button>
       </Link>
       <Link id="toApplications" to="/applications">
         Submitted Applications
@@ -49,15 +49,6 @@ const Container = styled.div`
     button {
       width: 395px;
       height: 79px;
-      background-color: var(--redberryRed);
-      border-radius: 50px;
-      border: none;
-
-      color: #fff;
-      font-family: Montserrat;
-      font-size: 24px;
-      line-height: 29px;
-      cursor: pointer;
     }
   }
   #toApplications {

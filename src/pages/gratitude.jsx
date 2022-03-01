@@ -1,6 +1,16 @@
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 function PageForGratitude() {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    setTimeout(() => {
+      navigate("/");
+    }, 3000);
+  }, []);
+
   return (
     <Container>
       <h1>Thanks for Joining 😊</h1>
