@@ -41,6 +41,7 @@
     "array-callback-return": "off",
     "import/prefer-default-export": "off",
     "jsx-a11y/anchor-is-valid": "off",
-    "react/button-has-type": 0
+    "react/button-has-type": "off",
+    "default-param-last": "off"
   }
 }
