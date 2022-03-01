@@ -1,9 +1,15 @@
-import styled from "styled-components";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
+import WelcomePage from "./pages/Welcome";
 
 function App() {
-  return <Container />;
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<WelcomePage />} />
+      </Routes>
+    </BrowserRouter>
+  );
 }
 
 export default App;
-
-const Container = styled.div``;
