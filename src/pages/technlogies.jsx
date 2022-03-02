@@ -6,12 +6,14 @@ import DarkComponent from "../components/dark-side";
 import DotsOfPages from "../components/page-dots";
 
 function TechnologiesPage() {
-  const [skills, setSkills] = useState();
+  const [skills, setSkills] = useState(null);
 
+  // FIXME ამ გვერდზე ყოველ გადასვლაზე ახლიდან არ იტვირთებოდეს. შეიძლება სხვა ფაილში გადატანა.
   useEffect(() => {
     axios
       .get(`https://bootcamp-2022.devtest.ge/api/skills`)
       .then(result => setSkills(result.data));
+    console.log("get skills");
   }, []);
 
   const addLanguageBtn = () => {};
