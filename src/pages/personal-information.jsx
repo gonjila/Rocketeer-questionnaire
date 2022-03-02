@@ -11,11 +11,7 @@ function PersonalInformationPage() {
           <input className="input" type="text" placeholder="First Name" />
           <input className="input" type="text" placeholder="Last Name" />
           <input className="input" type="mail" placeholder="E-Mail" />
-          <input
-            className="input"
-            type="number"
-            placeholder="+995 5__ ___ ___"
-          />
+          <input className="input" type="tel" placeholder="+995 5__ ___ ___" />
           {/* <button>submit</button> */}
         </form>
         <DotsOfPages />
@@ -39,11 +35,6 @@ const Container = styled.div`
   display: flex;
 
   .lightSide {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-
     .title {
       width: 716px;
       margin-bottom: 130px;

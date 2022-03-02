@@ -42,6 +42,8 @@
     "import/prefer-default-export": "off",
     "jsx-a11y/anchor-is-valid": "off",
     "react/button-has-type": "off",
-    "default-param-last": "off"
+    "default-param-last": "off",
+    "arrow-body-style": 1,
+    "react/self-closing-comp": 1
   }
 }

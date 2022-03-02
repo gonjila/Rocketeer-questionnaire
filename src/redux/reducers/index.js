@@ -13,8 +13,8 @@ const initialState = {
 
 export const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case types.asd: {
-      return "asd";
+    case types.ADD_SKILL: {
+      return "";
     }
     default: {
       return state;
