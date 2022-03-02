@@ -23,7 +23,7 @@ function TechnologiesPage() {
       <div className="lightSide">
         <h1 className="title">Tell us about your skills</h1>
         <form>
-          <select className="input" name="skills">
+          <select className="input select" name="skills">
             <option value="skill">skill</option>
             {skills?.map(skill => (
               <option key={skill.id} value={skill.title}>
@@ -98,6 +98,13 @@ const Container = styled.div`
       display: flex;
       flex-direction: column;
 
+      .select {
+        appearance: none;
+        -moz-appearance: none;
+        -webkit-appearence: none;
+        background: url("/images/Vector.svg") no-repeat calc(100% - 20px) center;
+      }
+
       div {
         width: 100%;
         text-align: end;
@@ -116,7 +123,7 @@ const Container = styled.div`
 
     .skillsWrapper {
       height: 300px;
-      margin-bottom: 160px;
+      margin: 0 0 160px 15px;
       overflow-y: scroll;
 
       display: flex;
