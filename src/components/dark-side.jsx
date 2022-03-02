@@ -5,6 +5,7 @@ function DarkComponent({ children, title }) {
     <Container>
       <div className="title">{title}</div>
       <div className="child">{children}</div>
+      <div />
     </Container>
   );
 }
@@ -17,7 +18,11 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
+
+  .title {
+    margin-bottom: 100px;
+  }
 
   .child {
     width: 705px;
@@ -30,6 +35,6 @@ const Container = styled.div`
     line-height: 200%;
 
     display: flex;
-    align-items: center;
+    align-items: flex-start;
   }
 `;

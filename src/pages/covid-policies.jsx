@@ -80,7 +80,6 @@ function CovidPage() {
 
 export default CovidPage;
 
-// TODO fonts, sizes,
 const Container = styled.div`
   display: flex;
 
@@ -101,7 +100,6 @@ const Container = styled.div`
 
         p {
           width: 645px;
-          /* height: 52px; */
           margin: 0 0 24px;
 
           font-family: Montserrat;
