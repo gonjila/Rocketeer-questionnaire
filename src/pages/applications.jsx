@@ -51,7 +51,6 @@ function ApplicationsPage() {
             <div className="answersComponent covidSituation">
               <h3>Covid Situation</h3>
 
-              {/* <div> */}
               <div className="radiosWrapper">
                 <p>how would you prefer to work?</p>
                 <label>
@@ -103,13 +102,11 @@ function ApplicationsPage() {
 
                 <input className="input" type="date" />
               </div>
-              {/* </div> */}
             </div>
 
             <div className="answersComponent insights">
               <h3>Insigts</h3>
 
-              {/* <div> */}
               <div className="radiosWrapper">
                 <p>
                   Would you attend Devtalks and maybe also organize your own?
@@ -136,7 +133,6 @@ function ApplicationsPage() {
                 <p>Tell us somthing special</p>
                 <textarea value="I can deBUG anything!" cols="30" rows="10" />
               </div>
-              {/* </div> */}
             </div>
           </div>
         </div>
@@ -151,7 +147,7 @@ const Container = styled.div`
   width: 100%;
   min-height: 100vh;
   background-image: var(--primaryBg);
-  padding: 0 350px;
+  padding: 15px 350px;
 
   display: flex;
   flex-direction: column;
@@ -159,7 +155,7 @@ const Container = styled.div`
   justify-content: flex-start;
 
   .applicationsTitle {
-    margin: 95px 0 55px;
+    margin: 80px 0 55px;
 
     color: #fff;
     font-family: Rowdies;

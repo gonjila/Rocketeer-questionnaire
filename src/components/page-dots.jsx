@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 
 import { routes } from "../redux/selectors";
 
-function DotsOfPages() {
+function DotsOfPages({ formRef }) {
   const location = useLocation();
   const RoutesInStore = useSelector(routes);
 
@@ -16,6 +16,14 @@ function DotsOfPages() {
       RoutesInStore.findIndex(route => route === location.pathname)
     );
   }, [location]);
+
+  const onNextBtn = () => {
+    // თუ ვალიდური არაა ჩამოწოდებული ინფუთი მაშინ არ გაუშვებს კოდს.
+    const formValidity = formRef.current.reportValidity();
+    if (formValidity) {
+      console.log(formRef.current.id);
+    }
+  };
 
   return (
     <Container>
@@ -28,7 +36,7 @@ function DotsOfPages() {
       <Link to="/covid" className="dot" />
       <Link to="/about-events" className="dot" />
       <Link to="/submitter" className="dot" />
-      <Link to="#">
+      <Link to="#" onClick={onNextBtn}>
         <img src="/images/Next.svg" alt="right arrow" />
       </Link>
     </Container>
@@ -46,6 +54,10 @@ const Container = styled.div`
     width: 19px;
     height: 19px;
     margin: 0 15px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
   .dot {
     border-radius: 50%;
