@@ -10,7 +10,7 @@ function CovidPage() {
         <h1 className="title">Covid Stuff</h1>
 
         <form>
-          <div>
+          <div className="radiosWrapper">
             <p>How would you prefer to work?</p>
             <label htmlFor="Office">
               <input id="Office" type="radio" name="workingEnvironment" />
@@ -26,7 +26,7 @@ function CovidPage() {
             </label>
           </div>
 
-          <div>
+          <div className="radiosWrapper">
             <p>Did you contact covid 19? :(</p>
             <label htmlFor="contacted">
               <input id="contacted" type="radio" name="covidContact" />
@@ -43,7 +43,7 @@ function CovidPage() {
             <input className="input" type="date" placeholder="Date" />
           </div>
 
-          <div>
+          <div className="radiosWrapper">
             <p>Have you been vaccinated?</p>
             <label htmlFor="vaccined">
               <input id="vaccined" type="radio" name="vaccined" />
@@ -91,30 +91,13 @@ const Container = styled.div`
     form {
       margin-bottom: 140px;
 
-      div {
+      .radiosWrapper {
         margin-bottom: 50px;
-
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
 
         p {
           width: 645px;
-          margin: 0 0 24px;
-
-          font-family: Montserrat;
-          font-size: 18px;
-          line-height: 22px;
-        }
-        label {
-          margin: 0 0 16px 10px;
-
-          input {
-          }
         }
       }
     }
-  }
-  .darkSide {
   }
 `;

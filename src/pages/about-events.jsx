@@ -10,7 +10,7 @@ function AboutEventsPage() {
         <h1 className="title">What about you?</h1>
 
         <form>
-          <div>
+          <div className="radiosWrapper">
             <p>Would you attend Devtalks and maybe also organize your own?</p>
             <label htmlFor="attend">
               <input id="attend" type="radio" name="attendance" /> Yes
@@ -65,28 +65,8 @@ const Container = styled.div`
       div {
         margin-bottom: 35px;
 
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-
         p {
           width: 645px;
-          margin: 0 0 24px;
-
-          font-family: Montserrat;
-          font-size: 18px;
-          line-height: 22px;
-        }
-
-        label {
-          margin-left: 10px;
-
-          &:not(:last-child) {
-            margin-bottom: 16px;
-          }
-
-          input {
-          }
         }
 
         textarea {

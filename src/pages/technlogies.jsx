@@ -104,7 +104,8 @@ const Container = styled.div`
         appearance: none;
         -moz-appearance: none;
         -webkit-appearence: none;
-        background: url("/images/Vector.svg") no-repeat calc(100% - 20px) center;
+        background: url("/images/redVector.svg") no-repeat calc(100% - 20px)
+          center;
       }
 
       div {
