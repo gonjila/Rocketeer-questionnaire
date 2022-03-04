@@ -21,8 +21,6 @@ function AboutEventsPage() {
   } = useForm();
 
   const onFormSubmit = data => {
-    // console.log("events-data", data);
-
     dispatch(ADD_EVENT(data));
 
     navigate("/submitter");

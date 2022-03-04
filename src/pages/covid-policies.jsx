@@ -21,8 +21,6 @@ function CovidPage() {
   } = useForm();
 
   const onFormSubmit = data => {
-    // console.log("covid data", data);
-
     dispatch(ADD_COVID(data));
 
     navigate("/about-events");

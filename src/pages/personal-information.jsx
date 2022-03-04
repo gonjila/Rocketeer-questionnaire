@@ -21,8 +21,6 @@ function PersonalInformationPage() {
   } = useForm();
 
   const onFormSubmit = data => {
-    // console.log("information page", data);
-
     dispatch(ADD_IDENTITY(data));
 
     navigate("/technlogies");
