@@ -82,7 +82,7 @@ function ApplicationsPage() {
               <div>
                 <p>When did you have covid 19?</p>
 
-                <input className="input" type="date" />
+                <input className="input" type="date" value="2022-03-23" />
               </div>
 
               <div className="radiosWrapper">
@@ -100,7 +100,7 @@ function ApplicationsPage() {
               <div>
                 <p>When did you get covid vaccine?</p>
 
-                <input className="input" type="date" />
+                <input className="input" type="date" value="2022-03-23" />
               </div>
             </div>
 

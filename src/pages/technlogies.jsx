@@ -1,4 +1,6 @@
-import { useEffect, useState } from "react";
+import { useState, useEffect, useRef } from "react";
+import { useNavigate } from "react-router-dom";
+import { useForm } from "react-hook-form";
 import axios from "axios";
 import styled from "styled-components";
 
@@ -6,15 +8,28 @@ import DarkComponent from "../components/dark-side";
 import DotsOfPages from "../components/page-dots";
 
 function TechnologiesPage() {
+  const formRef = useRef();
+  const navigate = useNavigate();
+
+  const {
+    handleSubmit,
+    register,
+    // formState: { errors },
+  } = useForm();
+
   const [skills, setSkills] = useState(null);
 
-  // FIXME ამ გვერდზე ყოველ გადასვლაზე ახლიდან არ იტვირთებოდეს. შეიძლება სხვა ფაილში გადატანა.
   useEffect(() => {
     axios
       .get(`https://bootcamp-2022.devtest.ge/api/skills`)
       .then(result => setSkills(result.data));
-    console.log("get skills");
   }, []);
+
+  const onFormSubmit = data => {
+    console.log("technology page", data);
+
+    navigate("/covid");
+  };
 
   const addLanguageBtn = () => {};
 
@@ -24,8 +39,18 @@ function TechnologiesPage() {
     <Container className="page">
       <div className="lightSide">
         <h1 className="title">Tell us about your skills</h1>
-        <form>
-          <select className="input select" name="skills">
+
+        <form
+          id="technology-form"
+          onSubmit={handleSubmit(onFormSubmit)}
+          ref={formRef}
+        >
+          {/* TODO როცა ჩამოვშლი ისარი ატრიალდეს */}
+          <select
+            className="input select"
+            name="skills"
+            {...register("skill", { required: true })}
+          >
             <option value="skill">skill</option>
             {skills?.map(skill => (
               <option key={skill.id} value={skill.title}>
@@ -33,12 +58,15 @@ function TechnologiesPage() {
               </option>
             ))}
           </select>
+
           <input
             className="input"
             type="number"
             min={0}
             placeholder="Experience Duration in Years"
+            {...register("experiance", { required: true })}
           />
+
           <div>
             <button
               className="addLanguages"
@@ -68,7 +96,7 @@ function TechnologiesPage() {
           </div>
         </div>
 
-        <DotsOfPages />
+        <DotsOfPages formRef={formRef} />
       </div>
 
       <div className="darkSide">

@@ -1,68 +1,144 @@
+import { useRef } from "react";
+import { useNavigate } from "react-router-dom";
+import { useForm } from "react-hook-form";
 import styled from "styled-components";
 
 import DarkComponent from "../components/dark-side";
 import DotsOfPages from "../components/page-dots";
 
 function CovidPage() {
+  const formRef = useRef();
+  const navigate = useNavigate();
+
+  const {
+    handleSubmit,
+    register,
+    // formState: { errors },
+  } = useForm();
+
+  const onFormSubmit = data => {
+    console.log("covid data", data);
+
+    navigate("/about-events");
+  };
+
   return (
     <Container className="page">
       <div className="lightSide">
         <h1 className="title">Covid Stuff</h1>
 
-        <form>
+        <form
+          id="covid-form"
+          onSubmit={handleSubmit(onFormSubmit)}
+          ref={formRef}
+        >
           <div className="radiosWrapper">
             <p>How would you prefer to work?</p>
+
             <label htmlFor="Office">
-              <input id="Office" type="radio" name="workingEnvironment" />
+              <input
+                id="Office"
+                type="radio"
+                value="From Sairme Office"
+                {...register("workPlace", { required: true })}
+              />
               From Sairme Office
             </label>
+
             <label htmlFor="Home">
-              <input id="Home" type="radio" name="workingEnvironment" />
+              <input
+                id="Home"
+                type="radio"
+                value="From Home"
+                {...register("workPlace", { required: true })}
+              />
               From Home
             </label>
+
             <label htmlFor="Hybrid">
-              <input id="Hybrid" type="radio" name="workingEnvironment" />
+              <input
+                id="Hybrid"
+                type="radio"
+                value="Hybrid"
+                {...register("workPlace", { required: true })}
+              />
               Hybrid
             </label>
           </div>
 
           <div className="radiosWrapper">
             <p>Did you contact covid 19? :(</p>
+
             <label htmlFor="contacted">
-              <input id="contacted" type="radio" name="covidContact" />
+              <input
+                id="contacted"
+                type="radio"
+                value="Yes"
+                {...register("covidContact", { required: true })}
+              />
               Yes
             </label>
+
             <label htmlFor="noContacted">
-              <input id="noContacted" type="radio" name="covidContact" />
+              <input
+                id="noContacted"
+                type="radio"
+                value="No"
+                {...register("covidContact", { required: true })}
+              />
               No
             </label>
           </div>
 
           <div>
             <p>When?</p>
-            <input className="input" type="date" placeholder="Date" />
+
+            <input
+              className="input"
+              type="date"
+              placeholder="Date"
+              {...register("covidDate", { required: true })}
+            />
           </div>
 
           <div className="radiosWrapper">
             <p>Have you been vaccinated?</p>
+
             <label htmlFor="vaccined">
-              <input id="vaccined" type="radio" name="vaccined" />
+              <input
+                id="vaccined"
+                type="radio"
+                value="Yes"
+                {...register("vaccined", { required: true })}
+              />
               Yes
             </label>
+
             <label htmlFor="notVaccined">
-              <input id="notVaccined" type="radio" name="vaccined" />
+              <input
+                id="notVaccined"
+                type="radio"
+                value="No"
+                {...register("vaccined", { required: true })}
+              />
               No
             </label>
           </div>
 
           <div>
             <p>When did you get your last covid vaccine?</p>
-            <input className="input" type="date" placeholder="Date" />
+            <input
+              className="input"
+              type="date"
+              placeholder="Date"
+              {...register("vaccinedDate", { required: true })}
+            />
           </div>
         </form>
 
-        <DotsOfPages />
+        <DotsOfPages formRef={formRef} />
       </div>
+
       <div className="darkSide">
         <DarkComponent title="Redberry Covid Policies">
           As this infamous pandemic took over the world, we adjusted our working
@@ -91,9 +167,10 @@ const Container = styled.div`
     form {
       margin-bottom: 140px;
 
-      .radiosWrapper {
+      div {
         margin-bottom: 50px;
-
+      }
+      .radiosWrapper {
         p {
           width: 645px;
         }

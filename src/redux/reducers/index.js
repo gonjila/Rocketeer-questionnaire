@@ -1,14 +1,7 @@
 import * as types from "../action-types";
 
 const initialState = {
-  routes: [
-    "/",
-    "/personal-information",
-    "/technlogies",
-    "/covid",
-    "/about-events",
-    "/submitter",
-  ],
+  skills: [],
 };
 
 export const reducer = (state = initialState, action) => {

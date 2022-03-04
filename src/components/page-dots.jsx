@@ -1,28 +1,29 @@
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import styled from "styled-components";
-import { useSelector } from "react-redux";
 
-import { routes } from "../redux/selectors";
+import routes from "../utils/routes";
 
 function DotsOfPages({ formRef }) {
   const location = useLocation();
-  const RoutesInStore = useSelector(routes);
 
   const [currentPageNumber, setCurrentPageNumber] = useState(0);
 
   useEffect(() => {
     setCurrentPageNumber(
-      RoutesInStore.findIndex(route => route === location.pathname)
+      routes.findIndex(route => route === location.pathname)
     );
   }, [location]);
 
-  const onNextBtn = () => {
-    // თუ ვალიდური არაა ჩამოწოდებული ინფუთი მაშინ არ გაუშვებს კოდს.
-    const formValidity = formRef.current.reportValidity();
-    if (formValidity) {
-      console.log(formRef.current.id);
+  const dotsClassname = pageNum => {
+    if (currentPageNumber < pageNum) {
+      return "dot deactiveDot";
     }
+    if (currentPageNumber == pageNum) {
+      return "dot semiDeactiveDot";
+    }
+
+    return "dot";
   };
 
   return (
@@ -31,14 +32,18 @@ function DotsOfPages({ formRef }) {
       <Link to="#">
         <img src="/images/Previous.svg" alt="left arrow" />
       </Link>
-      <Link to="/personal-information" className="dot" />
-      <Link to="/technlogies" className="dot" />
-      <Link to="/covid" className="dot" />
-      <Link to="/about-events" className="dot" />
-      <Link to="/submitter" className="dot" />
-      <Link to="#" onClick={onNextBtn}>
+
+      <Link to="/personal-information" className={dotsClassname(1)} />
+      <Link to="/technlogies" className={dotsClassname(2)} />
+      <Link to="/covid" className={dotsClassname(3)} />
+      <Link to="/about-events" className={dotsClassname(4)} />
+      <Link to="/submitter" className={dotsClassname(5)} />
+
+      {/* <Link to="#" onClick={onNextBtn}> */}
+      <button form={formRef?.current?.id}>
         <img src="/images/Next.svg" alt="right arrow" />
-      </Link>
+      </button>
+      {/* </Link> */}
     </Container>
   );
 }
@@ -50,10 +55,12 @@ const Container = styled.div`
   display: flex;
   justify-content: center;
 
-  a {
+  a,
+  button {
     width: 19px;
     height: 19px;
     margin: 0 15px;
+    cursor: pointer;
 
     display: flex;
     align-items: center;
@@ -62,6 +69,17 @@ const Container = styled.div`
   .dot {
     border-radius: 50%;
     background-color: var(--redberryRed);
+  }
+  .semiDeactiveDot {
+    pointer-events: none;
+  }
+  .deactiveDot {
+    opacity: 0.1;
+    pointer-events: none;
+  }
+  button {
+    background: transparent;
+    border: none;
     cursor: pointer;
   }
 `;

@@ -1,37 +1,82 @@
+import { useRef } from "react";
+import { useNavigate } from "react-router-dom";
+import { useForm } from "react-hook-form";
 import styled from "styled-components";
 
 import DarkComponent from "../components/dark-side";
 import DotsOfPages from "../components/page-dots";
 
 function AboutEventsPage() {
+  const formRef = useRef();
+  const navigate = useNavigate();
+
+  const {
+    handleSubmit,
+    register,
+    // formState: { errors },
+  } = useForm();
+
+  const onFormSubmit = data => {
+    console.log("events-data", data);
+
+    navigate("/submitter");
+  };
+
   return (
     <Container className="page">
       <div className="lightSide">
         <h1 className="title">What about you?</h1>
 
-        <form>
+        <form
+          id="events-form"
+          onSubmit={handleSubmit(onFormSubmit)}
+          ref={formRef}
+        >
           <div className="radiosWrapper">
             <p>Would you attend Devtalks and maybe also organize your own?</p>
             <label htmlFor="attend">
-              <input id="attend" type="radio" name="attendance" /> Yes
+              <input
+                id="attend"
+                type="radio"
+                value="Yes"
+                {...register("attendance", { required: true })}
+              />{" "}
+              Yes
             </label>
             <label htmlFor="notAttend">
-              <input id="notAttend" type="radio" name="attendance" /> No
+              <input
+                id="notAttend"
+                type="radio"
+                value="No"
+                {...register("attendance", { required: true })}
+              />{" "}
+              No
             </label>
           </div>
 
           <div>
             <p>What would you speak about at Devtalk?</p>
-            <textarea placeholder="I would..." cols="30" rows="10" />
+            <textarea
+              placeholder="I would..."
+              cols="30"
+              rows="10"
+              {...register("devTalk", { required: true })}
+            />
           </div>
 
           <div>
             <p>Tell us something special</p>
-            <textarea id="specialArea" placeholder="I..." cols="30" rows="10" />
+            <textarea
+              id="specialArea"
+              placeholder="I..."
+              cols="30"
+              rows="10"
+              {...register("special", { required: true })}
+            />
           </div>
         </form>
 
-        <DotsOfPages />
+        <DotsOfPages formRef={formRef} />
       </div>
       <div className="darkSide">
         <DarkComponent title="Redberrian Insights">

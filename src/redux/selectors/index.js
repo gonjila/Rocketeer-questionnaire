@@ -1,1 +1,1 @@
-export const routes = store => store.routes;
+export const skills = store => store.skills;
