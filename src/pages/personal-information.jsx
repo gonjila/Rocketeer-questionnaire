@@ -95,7 +95,4 @@ const Container = styled.div`
       flex-direction: column;
     }
   }
-
-  .darkSide {
-  }
 `;

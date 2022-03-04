@@ -1,15 +1,19 @@
-import { useState, useEffect, useRef } from "react";
-import { useNavigate } from "react-router-dom";
+import { useState, useEffect, useRef, memo } from "react";
 import { useForm } from "react-hook-form";
+import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import styled from "styled-components";
+
+import { ADD_SKILL } from "../redux/actions";
+import { skills } from "../redux/selectors";
 
 import DarkComponent from "../components/dark-side";
 import DotsOfPages from "../components/page-dots";
 
 function TechnologiesPage() {
   const formRef = useRef();
-  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const skillsSelector = useSelector(skills);
 
   const {
     handleSubmit,
@@ -17,21 +21,20 @@ function TechnologiesPage() {
     // formState: { errors },
   } = useForm();
 
-  const [skills, setSkills] = useState(null);
+  const [APISkills, setAPISkills] = useState(null);
 
   useEffect(() => {
     axios
       .get(`https://bootcamp-2022.devtest.ge/api/skills`)
-      .then(result => setSkills(result.data));
+      .then(result => setAPISkills(result.data));
   }, []);
 
   const onFormSubmit = data => {
     console.log("technology page", data);
 
-    navigate("/covid");
+    dispatch(ADD_SKILL(data));
+    // navigate("/covid");
   };
-
-  const addLanguageBtn = () => {};
 
   const onRemoveBtn = () => {};
 
@@ -51,7 +54,7 @@ function TechnologiesPage() {
             {...register("skill", { required: true })}
           >
             <option>skills</option>
-            {skills?.map(skill => (
+            {APISkills?.map(skill => (
               <option key={skill.id}>{skill.title}</option>
             ))}
           </select>
@@ -65,19 +68,26 @@ function TechnologiesPage() {
           />
 
           <div>
-            <button
-              className="addLanguages"
-              type="button"
-              onClick={addLanguageBtn}
-            >
+            <button className="addLanguages" type="submit">
               Add Programming Language
             </button>
           </div>
         </form>
 
         <div className="skillsWrapper">
-          {/* TODO reduxidan skilebis chamonaTvali */}
-          <div className="choosenSkill">
+          {skillsSelector
+            ? skillsSelector.map(skill => (
+                <div className="choosenSkill" key={skill.id}>
+                  <div>{skill.skill}</div>
+                  <div>Years of Experience: {skill.experiance}</div>
+                  <button onClick={() => onRemoveBtn(skill.id)}>
+                    <img src="/images/Remove.svg" alt="remove" />
+                  </button>
+                </div>
+              ))
+            : "add skill"}
+
+          {/* <div className="choosenSkill">
             <div>PHP</div>
             <div>Years of Experience: 3</div>
             <button onClick={onRemoveBtn}>
@@ -90,10 +100,10 @@ function TechnologiesPage() {
             <button onClick={onRemoveBtn}>
               <img src="/images/Remove.svg" alt="remove" />
             </button>
-          </div>
+          </div> */}
         </div>
 
-        <DotsOfPages formRef={formRef} />
+        <DotsOfPages />
       </div>
 
       <div className="darkSide">

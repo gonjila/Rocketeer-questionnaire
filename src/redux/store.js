@@ -1,5 +1,8 @@
-import { createStore } from "redux";
+import { createStore, applyMiddleware } from "redux";
 
 import { reducer } from "./reducers";
+import { MIDDLE_SKILL, MIDDLE_LOGGER } from "./middlewares";
 
-export const reduxStore = createStore(reducer);
+const middlewares = [MIDDLE_LOGGER, MIDDLE_SKILL];
+
+export const reduxStore = createStore(reducer, applyMiddleware(...middlewares));

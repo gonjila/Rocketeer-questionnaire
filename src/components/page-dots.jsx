@@ -18,8 +18,15 @@ function DotsOfPages({ formRef }) {
     );
   }, [location]);
 
-  const onLeftArrow = () => {
+  const onPreviousArrow = () => {
     navigate(routes[currentPageNumber - 1]);
+  };
+
+  const onNextArrow = () => {
+    // TODO და თუ ერთი skill მაინც არის არჩეული
+    if (!formRef) {
+      navigate(routes[currentPageNumber + 1]);
+    }
   };
 
   const dotsClassname = pageNum => {
@@ -36,7 +43,7 @@ function DotsOfPages({ formRef }) {
   return (
     <Container>
       {/* TODO marto wina gverdebs unda echirebodes */}
-      <a onClick={onLeftArrow}>
+      <a onClick={onPreviousArrow}>
         <img src="/images/Previous.svg" alt="left arrow" />
       </a>
 
@@ -46,11 +53,9 @@ function DotsOfPages({ formRef }) {
       <Link to="/about-events" className={dotsClassname(4)} />
       <Link to="/submitter" className={dotsClassname(5)} />
 
-      {/* <Link to="#" onClick={onNextBtn}> */}
-      <button form={formRef?.current?.id}>
+      <button form={formRef?.current?.id} onClick={onNextArrow}>
         <img src="/images/Next.svg" alt="right arrow" />
       </button>
-      {/* </Link> */}
     </Container>
   );
 }
