@@ -1,10 +1,10 @@
-import { useState, useEffect, useRef, memo } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import styled from "styled-components";
 
-import { ADD_SKILL } from "../redux/actions";
+import { ADD_SKILL, DELETE_SKILL } from "../redux/actions";
 import { skills } from "../redux/selectors";
 
 import DarkComponent from "../components/dark-side";
@@ -30,13 +30,12 @@ function TechnologiesPage() {
   }, []);
 
   const onFormSubmit = data => {
-    console.log("technology page", data);
-
     dispatch(ADD_SKILL(data));
-    // navigate("/covid");
   };
 
-  const onRemoveBtn = () => {};
+  const onRemoveBtn = skillId => {
+    dispatch(DELETE_SKILL(skillId));
+  };
 
   return (
     <Container className="page">
@@ -75,7 +74,7 @@ function TechnologiesPage() {
         </form>
 
         <div className="skillsWrapper">
-          {skillsSelector
+          {skillsSelector.length > 0
             ? skillsSelector.map(skill => (
                 <div className="choosenSkill" key={skill.id}>
                   <div>{skill.skill}</div>
@@ -85,22 +84,7 @@ function TechnologiesPage() {
                   </button>
                 </div>
               ))
-            : "add skill"}
-
-          {/* <div className="choosenSkill">
-            <div>PHP</div>
-            <div>Years of Experience: 3</div>
-            <button onClick={onRemoveBtn}>
-              <img src="/images/Remove.svg" alt="remove" />
-            </button>
-          </div>
-          <div className="choosenSkill">
-            <div>React</div>
-            <div>Years of Experience: 2</div>
-            <button onClick={onRemoveBtn}>
-              <img src="/images/Remove.svg" alt="remove" />
-            </button>
-          </div> */}
+            : "Add skill!"}
         </div>
 
         <DotsOfPages />
