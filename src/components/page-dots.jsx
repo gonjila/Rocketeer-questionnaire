@@ -1,10 +1,13 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 import { useEffect, useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import styled from "styled-components";
 
 import routes from "../utils/routes";
 
 function DotsOfPages({ formRef }) {
+  const navigate = useNavigate();
   const location = useLocation();
 
   const [currentPageNumber, setCurrentPageNumber] = useState(0);
@@ -14,6 +17,10 @@ function DotsOfPages({ formRef }) {
       routes.findIndex(route => route === location.pathname)
     );
   }, [location]);
+
+  const onLeftArrow = () => {
+    navigate(routes[currentPageNumber - 1]);
+  };
 
   const dotsClassname = pageNum => {
     if (currentPageNumber < pageNum) {
@@ -29,9 +36,9 @@ function DotsOfPages({ formRef }) {
   return (
     <Container>
       {/* TODO marto wina gverdebs unda echirebodes */}
-      <Link to="#">
+      <a onClick={onLeftArrow}>
         <img src="/images/Previous.svg" alt="left arrow" />
-      </Link>
+      </a>
 
       <Link to="/personal-information" className={dotsClassname(1)} />
       <Link to="/technlogies" className={dotsClassname(2)} />

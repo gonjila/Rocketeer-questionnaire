@@ -48,14 +48,11 @@ function TechnologiesPage() {
           {/* TODO როცა ჩამოვშლი ისარი ატრიალდეს */}
           <select
             className="input select"
-            name="skills"
             {...register("skill", { required: true })}
           >
-            <option value="skill">skill</option>
+            <option>skills</option>
             {skills?.map(skill => (
-              <option key={skill.id} value={skill.title}>
-                {skill.title}
-              </option>
+              <option key={skill.id}>{skill.title}</option>
             ))}
           </select>
 
