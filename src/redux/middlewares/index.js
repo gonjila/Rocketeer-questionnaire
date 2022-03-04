@@ -2,7 +2,6 @@
 /* eslint-disable no-console */
 import { ADD_SKILL_TYPE, DELETE_SKILL_TYPE } from "../action-types";
 
-// TODO თუ skill იქნება skill მაშინ არ დაამატოს
 export const MIDDLE_SKILL = store => next => action => {
   if (action.type === ADD_SKILL_TYPE) {
     const includeSkill = store
@@ -11,7 +10,9 @@ export const MIDDLE_SKILL = store => next => action => {
         skillObject => skillObject.skill === action.payload.skill
       );
 
-    if (includeSkill === -1) {
+    if (action.payload.skill === "skills") {
+      alert("Choose skill");
+    } else if (includeSkill === -1) {
       next(action);
     } else {
       alert("This skill has already been added");
