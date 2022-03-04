@@ -1,7 +1,10 @@
 import { useRef } from "react";
-import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
+import { useForm } from "react-hook-form";
+import { useDispatch } from "react-redux";
 import styled from "styled-components";
+
+import { ADD_IDENTITY } from "../redux/actions";
 
 import DarkComponent from "../components/dark-side";
 import DotsOfPages from "../components/page-dots";
@@ -9,6 +12,7 @@ import DotsOfPages from "../components/page-dots";
 function PersonalInformationPage() {
   const formRef = useRef();
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const {
     handleSubmit,
@@ -17,7 +21,9 @@ function PersonalInformationPage() {
   } = useForm();
 
   const onFormSubmit = data => {
-    console.log("information page", data);
+    // console.log("information page", data);
+
+    dispatch(ADD_IDENTITY(data));
 
     navigate("/technlogies");
   };

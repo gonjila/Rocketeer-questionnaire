@@ -17,9 +17,7 @@ export const MIDDLE_SKILL = store => next => action => {
     } else {
       alert("This skill has already been added");
     }
-  }
-
-  if (action.type === DELETE_SKILL_TYPE) {
+  } else {
     next(action);
   }
 };

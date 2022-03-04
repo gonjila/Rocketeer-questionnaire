@@ -6,7 +6,7 @@ import styled from "styled-components";
 
 import routes from "../utils/routes";
 
-function DotsOfPages({ formRef }) {
+function DotsOfPages({ formRef, skillsAmount }) {
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -23,8 +23,9 @@ function DotsOfPages({ formRef }) {
   };
 
   const onNextArrow = () => {
-    // TODO და თუ ერთი skill მაინც არის არჩეული
-    if (!formRef) {
+    if (skillsAmount <= 0) {
+      alert("Choose skill");
+    } else if (!formRef) {
       navigate(routes[currentPageNumber + 1]);
     }
   };

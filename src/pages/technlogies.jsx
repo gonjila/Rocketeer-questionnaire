@@ -87,7 +87,7 @@ function TechnologiesPage() {
             : "Add skill!"}
         </div>
 
-        <DotsOfPages />
+        <DotsOfPages skillsAmounte={skillsSelector.length} />
       </div>
 
       <div className="darkSide">

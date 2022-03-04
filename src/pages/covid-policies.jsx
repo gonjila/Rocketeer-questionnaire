@@ -1,7 +1,10 @@
 import { useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
+import { useDispatch } from "react-redux";
 import styled from "styled-components";
+
+import { ADD_COVID } from "../redux/actions";
 
 import DarkComponent from "../components/dark-side";
 import DotsOfPages from "../components/page-dots";
@@ -9,6 +12,7 @@ import DotsOfPages from "../components/page-dots";
 function CovidPage() {
   const formRef = useRef();
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const {
     handleSubmit,
@@ -17,7 +21,9 @@ function CovidPage() {
   } = useForm();
 
   const onFormSubmit = data => {
-    console.log("covid data", data);
+    // console.log("covid data", data);
+
+    dispatch(ADD_COVID(data));
 
     navigate("/about-events");
   };

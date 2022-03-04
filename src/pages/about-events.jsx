@@ -1,7 +1,10 @@
 import { useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
+import { useDispatch } from "react-redux";
 import styled from "styled-components";
+
+import { ADD_EVENT } from "../redux/actions";
 
 import DarkComponent from "../components/dark-side";
 import DotsOfPages from "../components/page-dots";
@@ -9,6 +12,7 @@ import DotsOfPages from "../components/page-dots";
 function AboutEventsPage() {
   const formRef = useRef();
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const {
     handleSubmit,
@@ -17,7 +21,9 @@ function AboutEventsPage() {
   } = useForm();
 
   const onFormSubmit = data => {
-    console.log("events-data", data);
+    // console.log("events-data", data);
+
+    dispatch(ADD_EVENT(data));
 
     navigate("/submitter");
   };
@@ -60,7 +66,7 @@ function AboutEventsPage() {
               placeholder="I would..."
               cols="30"
               rows="10"
-              {...register("devTalk", { required: true })}
+              {...register("devTalk", { required: false })}
             />
           </div>
 
@@ -71,7 +77,7 @@ function AboutEventsPage() {
               placeholder="I..."
               cols="30"
               rows="10"
-              {...register("special", { required: true })}
+              {...register("special", { required: false })}
             />
           </div>
         </form>
