@@ -62,6 +62,7 @@ body {
 }
 
 .inputErrorWrapper {
+  /* position: relative; */
   display: flex;
   flex-direction: column;
 }
@@ -93,6 +94,8 @@ input:invalid {
   font-style: italic;
   font-size: 11px;
   line-height: 13px;
+  /* position: absolute;
+  bottom: -20px; */
 }
 
 .radiosWrapper {
