@@ -61,6 +61,13 @@ body {
   line-height: 29px;
 }
 
+.inputErrorWrapper {
+  display: flex;
+  flex-direction: column;
+}
+.inputErrorWrapper:not(:last-child) {
+  margin-bottom: 35px;
+}
 input[type="radio"] {
   accent-color: var(--primaryRed);
 }
@@ -77,8 +84,15 @@ input[type="radio"] {
   font-size: 14px;
   line-height: 17px;
 }
-.input:not(:last-child) {
-  margin-bottom: 35px;
+input:invalid {
+  border: 1px solid var(--redberryRed);
+}
+.inputError {
+  margin: 5px 0 0 55px;
+  color: var(--redberryRed);
+  font-style: italic;
+  font-size: 11px;
+  line-height: 13px;
 }
 
 .radiosWrapper {

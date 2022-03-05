@@ -17,7 +17,7 @@ function PersonalInformationPage() {
   const {
     handleSubmit,
     register,
-    // formState: { errors },
+    formState: { errors, isValid },
   } = useForm();
 
   const onFormSubmit = data => {
@@ -36,33 +36,50 @@ function PersonalInformationPage() {
           onSubmit={handleSubmit(onFormSubmit)}
           ref={formRef}
         >
-          <input
-            className="input"
-            type="text"
-            placeholder="First Name"
-            {...register("firstName", { required: true })}
-          />
+          <div className="inputErrorWrapper">
+            <input
+              className="input"
+              type="text"
+              placeholder="First Name"
+              {...register("first_name", {
+                required: "* First name is required",
+                minLength: {
+                  value: 2,
+                  message: "* First name should include 3 or more characters",
+                },
+              })}
+            />
+            {errors.first_name && (
+              <span className="inputError">{errors?.first_name?.message}</span>
+            )}
+          </div>
 
-          <input
-            className="input"
-            type="text"
-            placeholder="Last Name"
-            {...register("lastName", { required: false })}
-          />
+          <div className="inputErrorWrapper">
+            <input
+              className="input"
+              type="text"
+              placeholder="Last Name"
+              {...register("last_name", { required: true })}
+            />
+          </div>
 
-          <input
-            className="input"
-            type="mail"
-            placeholder="E-Mail"
-            {...register("email", { required: false })}
-          />
+          <div className="inputErrorWrapper">
+            <input
+              className="input"
+              type="mail"
+              placeholder="E-Mail"
+              {...register("email", { required: true })}
+            />
+          </div>
 
-          <input
-            className="input"
-            type="tel"
-            placeholder="+995 5__ ___ ___"
-            {...register("mobileNumber", { required: false })}
-          />
+          <div className="inputErrorWrapper">
+            <input
+              className="input"
+              type="tel"
+              placeholder="+995 5__ ___ ___"
+              {...register("phone", { required: true })}
+            />
+          </div>
         </form>
 
         <DotsOfPages formRef={formRef} />

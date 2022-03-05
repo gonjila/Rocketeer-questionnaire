@@ -28,10 +28,6 @@ function AboutEventsPage() {
     navigate("/submitter");
   };
 
-  const onAttendance = () => {
-    setAttendance(value => !value);
-  };
-
   return (
     <Container className="page">
       <div className="lightSide">
@@ -50,7 +46,7 @@ function AboutEventsPage() {
                 type="radio"
                 value="Yes"
                 checked={attendance}
-                onClick={onAttendance}
+                onClick={() => setAttendance(true)}
                 {...register("attendance", { required: true })}
               />{" "}
               Yes
@@ -61,7 +57,7 @@ function AboutEventsPage() {
                 type="radio"
                 value="No"
                 checked={!attendance}
-                onClick={onAttendance}
+                onClick={() => setAttendance(false)}
                 {...register("attendance", { required: true })}
               />{" "}
               No

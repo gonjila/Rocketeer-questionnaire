@@ -29,14 +29,6 @@ function CovidPage() {
     navigate("/about-events");
   };
 
-  const onCovid = () => {
-    setCovidContacted(value => !value);
-  };
-
-  const onVaccin = () => {
-    setVaccinated(value => !value);
-  };
-
   return (
     <Container className="page">
       <div className="lightSide">
@@ -90,7 +82,7 @@ function CovidPage() {
                 type="radio"
                 value="Yes"
                 checked={covidContacted}
-                onClick={onCovid}
+                onClick={() => setCovidContacted(true)}
                 {...register("covidContact", { required: true })}
               />
               Yes
@@ -102,7 +94,7 @@ function CovidPage() {
                 type="radio"
                 value="No"
                 checked={!covidContacted}
-                onClick={onCovid}
+                onClick={() => setCovidContacted(false)}
                 {...register("covidContact", { required: true })}
               />
               No
@@ -129,7 +121,7 @@ function CovidPage() {
                 type="radio"
                 value="Yes"
                 checked={vaccinated}
-                onClick={onVaccin}
+                onClick={() => setVaccinated(true)}
                 {...register("vaccined", { required: true })}
               />
               Yes
@@ -141,7 +133,7 @@ function CovidPage() {
                 type="radio"
                 value="No"
                 checked={!vaccinated}
-                onClick={onVaccin}
+                onClick={() => setVaccinated(false)}
                 {...register("vaccined", { required: true })}
               />
               No
