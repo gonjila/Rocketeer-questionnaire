@@ -90,6 +90,7 @@ input:invalid {
 }
 .inputError {
   margin: 5px 0 0 55px;
+  text-align: left;
   color: var(--redberryRed);
   font-style: italic;
   font-size: 11px;

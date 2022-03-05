@@ -23,7 +23,8 @@ function DotsOfPages({ formRef, skillsAmount }) {
   };
 
   const onNextArrow = () => {
-    if (skillsAmount <= 0) {
+    if (skillsAmount === 0) {
+      // eslint-disable-next-line no-alert
       alert("Choose skill");
     } else if (!formRef) {
       navigate(routes[currentPageNumber + 1]);
