@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
@@ -14,6 +14,8 @@ function AboutEventsPage() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
+  const [attendance, setAttendance] = useState(false);
+
   const {
     handleSubmit,
     register,
@@ -24,6 +26,10 @@ function AboutEventsPage() {
     dispatch(ADD_EVENT(data));
 
     navigate("/submitter");
+  };
+
+  const onAttendance = () => {
+    setAttendance(value => !value);
   };
 
   return (
@@ -43,6 +49,8 @@ function AboutEventsPage() {
                 id="attend"
                 type="radio"
                 value="Yes"
+                checked={attendance}
+                onClick={onAttendance}
                 {...register("attendance", { required: true })}
               />{" "}
               Yes
@@ -52,13 +60,15 @@ function AboutEventsPage() {
                 id="notAttend"
                 type="radio"
                 value="No"
+                checked={!attendance}
+                onClick={onAttendance}
                 {...register("attendance", { required: true })}
               />{" "}
               No
             </label>
           </div>
 
-          <div>
+          <div style={attendance ? {} : { display: "none" }}>
             <p>What would you speak about at Devtalk?</p>
             <textarea
               placeholder="I would..."

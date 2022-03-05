@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
@@ -14,6 +14,9 @@ function CovidPage() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
+  const [covidContacted, setCovidContacted] = useState(false);
+  const [vaccinated, setVaccinated] = useState(false);
+
   const {
     handleSubmit,
     register,
@@ -24,6 +27,14 @@ function CovidPage() {
     dispatch(ADD_COVID(data));
 
     navigate("/about-events");
+  };
+
+  const onCovid = () => {
+    setCovidContacted(value => !value);
+  };
+
+  const onVaccin = () => {
+    setVaccinated(value => !value);
   };
 
   return (
@@ -78,6 +89,8 @@ function CovidPage() {
                 id="contacted"
                 type="radio"
                 value="Yes"
+                checked={covidContacted}
+                onClick={onCovid}
                 {...register("covidContact", { required: true })}
               />
               Yes
@@ -88,20 +101,22 @@ function CovidPage() {
                 id="noContacted"
                 type="radio"
                 value="No"
+                checked={!covidContacted}
+                onClick={onCovid}
                 {...register("covidContact", { required: true })}
               />
               No
             </label>
           </div>
 
-          <div>
+          <div style={covidContacted ? {} : { display: "none" }}>
             <p>When?</p>
 
             <input
               className="input"
               type="date"
               placeholder="Date"
-              {...register("covidDate", { required: true })}
+              {...register("covidDate", { required: covidContacted })}
             />
           </div>
 
@@ -113,6 +128,8 @@ function CovidPage() {
                 id="vaccined"
                 type="radio"
                 value="Yes"
+                checked={vaccinated}
+                onClick={onVaccin}
                 {...register("vaccined", { required: true })}
               />
               Yes
@@ -123,19 +140,21 @@ function CovidPage() {
                 id="notVaccined"
                 type="radio"
                 value="No"
+                checked={!vaccinated}
+                onClick={onVaccin}
                 {...register("vaccined", { required: true })}
               />
               No
             </label>
           </div>
 
-          <div>
+          <div style={vaccinated ? {} : { display: "none" }}>
             <p>When did you get your last covid vaccine?</p>
             <input
               className="input"
               type="date"
               placeholder="Date"
-              {...register("vaccinedDate", { required: true })}
+              {...register("vaccinedDate", { required: vaccinated })}
             />
           </div>
         </form>

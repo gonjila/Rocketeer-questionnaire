@@ -73,6 +73,7 @@ function TechnologiesPage() {
           </div>
         </form>
 
+        {/* FIXME გუგლ ქრომში ცუდადაა სქროლი */}
         <div className="skillsWrapper">
           {skillsSelector.length > 0
             ? skillsSelector.map(skill => (
