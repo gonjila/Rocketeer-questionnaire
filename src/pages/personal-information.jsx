@@ -23,7 +23,7 @@ function PersonalInformationPage() {
   const onFormSubmit = data => {
     dispatch(ADD_IDENTITY(data));
 
-    navigate("/technlogies");
+    navigate("/technologies");
   };
   // TODO თუ input არ არის ვალიდური მაშინ border უნდა გაუწითლდეს
   return (

@@ -20,7 +20,7 @@ function CovidPage() {
   const {
     handleSubmit,
     register,
-    // formState: { errors },
+    formState: { errors },
   } = useForm();
 
   const onFormSubmit = data => {
@@ -39,7 +39,7 @@ function CovidPage() {
           onSubmit={handleSubmit(onFormSubmit)}
           ref={formRef}
         >
-          <div className="radiosWrapper">
+          <div className="inputErrorWrapper radiosWrapper">
             <p>How would you prefer to work?</p>
 
             <label htmlFor="Office">
@@ -47,7 +47,7 @@ function CovidPage() {
                 id="Office"
                 type="radio"
                 value="From Sairme Office"
-                {...register("workPlace", { required: true })}
+                {...register("work_preference", { required: true })}
               />
               From Sairme Office
             </label>
@@ -57,7 +57,7 @@ function CovidPage() {
                 id="Home"
                 type="radio"
                 value="From Home"
-                {...register("workPlace", { required: true })}
+                {...register("work_preference", { required: true })}
               />
               From Home
             </label>
@@ -67,13 +67,16 @@ function CovidPage() {
                 id="Hybrid"
                 type="radio"
                 value="Hybrid"
-                {...register("workPlace", { required: true })}
+                {...register("work_preference", { required: true })}
               />
               Hybrid
             </label>
+            {errors?.work_preference && (
+              <span className="inputError">This field is required</span>
+            )}
           </div>
 
-          <div className="radiosWrapper">
+          <div className="inputErrorWrapper radiosWrapper">
             <p>Did you contact covid 19? :(</p>
 
             <label htmlFor="contacted">
@@ -81,9 +84,8 @@ function CovidPage() {
                 id="contacted"
                 type="radio"
                 value="Yes"
-                checked={covidContacted}
                 onClick={() => setCovidContacted(true)}
-                {...register("covidContact", { required: true })}
+                {...register("had_covid", { required: true })}
               />
               Yes
             </label>
@@ -93,26 +95,34 @@ function CovidPage() {
                 id="noContacted"
                 type="radio"
                 value="No"
-                checked={!covidContacted}
                 onClick={() => setCovidContacted(false)}
-                {...register("covidContact", { required: true })}
+                {...register("had_covid", { required: true })}
               />
               No
             </label>
+            {errors?.had_covid && (
+              <span className="inputError">This field is required</span>
+            )}
           </div>
 
-          <div style={covidContacted ? {} : { display: "none" }}>
+          <div
+            className="inputErrorWrapper"
+            style={covidContacted ? {} : { display: "none" }}
+          >
             <p>When?</p>
 
             <input
               className="input"
               type="date"
               placeholder="Date"
-              {...register("covidDate", { required: covidContacted })}
+              {...register("had_covid_at", { required: covidContacted })}
             />
+            {errors?.had_covid_at && (
+              <span className="inputError">This field is required</span>
+            )}
           </div>
 
-          <div className="radiosWrapper">
+          <div className="inputErrorWrapper radiosWrapper">
             <p>Have you been vaccinated?</p>
 
             <label htmlFor="vaccined">
@@ -120,9 +130,8 @@ function CovidPage() {
                 id="vaccined"
                 type="radio"
                 value="Yes"
-                checked={vaccinated}
                 onClick={() => setVaccinated(true)}
-                {...register("vaccined", { required: true })}
+                {...register("vaccinated", { required: true })}
               />
               Yes
             </label>
@@ -132,22 +141,30 @@ function CovidPage() {
                 id="notVaccined"
                 type="radio"
                 value="No"
-                checked={!vaccinated}
                 onClick={() => setVaccinated(false)}
-                {...register("vaccined", { required: true })}
+                {...register("vaccinated", { required: true })}
               />
               No
             </label>
+            {errors?.vaccinated && (
+              <span className="inputError">This field is required</span>
+            )}
           </div>
 
-          <div style={vaccinated ? {} : { display: "none" }}>
+          <div
+            className="inputErrorWrapper"
+            style={vaccinated ? {} : { display: "none" }}
+          >
             <p>When did you get your last covid vaccine?</p>
             <input
               className="input"
               type="date"
               placeholder="Date"
-              {...register("vaccinedDate", { required: vaccinated })}
+              {...register("vaccinated_at", { required: vaccinated })}
             />
+            {errors?.vaccinated_at && (
+              <span className="inputError">This field is required</span>
+            )}
           </div>
         </form>
 
@@ -184,6 +201,11 @@ const Container = styled.div`
 
       div {
         margin-bottom: 50px;
+      }
+      .inputErrorWrapper {
+        p {
+          margin-top: 0;
+        }
       }
       .radiosWrapper {
         p {
