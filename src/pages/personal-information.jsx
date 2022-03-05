@@ -1,7 +1,10 @@
 import { useRef } from "react";
-import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
+import { useForm } from "react-hook-form";
+import { useDispatch } from "react-redux";
 import styled from "styled-components";
+
+import { ADD_IDENTITY } from "../redux/actions";
 
 import DarkComponent from "../components/dark-side";
 import DotsOfPages from "../components/page-dots";
@@ -9,15 +12,16 @@ import DotsOfPages from "../components/page-dots";
 function PersonalInformationPage() {
   const formRef = useRef();
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const {
     handleSubmit,
     register,
-    // formState: { errors },
+    formState: { errors, isValid },
   } = useForm();
 
   const onFormSubmit = data => {
-    console.log("information page", data);
+    dispatch(ADD_IDENTITY(data));
 
     navigate("/technlogies");
   };
@@ -32,33 +36,50 @@ function PersonalInformationPage() {
           onSubmit={handleSubmit(onFormSubmit)}
           ref={formRef}
         >
-          <input
-            className="input"
-            type="text"
-            placeholder="First Name"
-            {...register("firstName", { required: true })}
-          />
+          <div className="inputErrorWrapper">
+            <input
+              className="input"
+              type="text"
+              placeholder="First Name"
+              {...register("first_name", {
+                required: "* First name is required",
+                minLength: {
+                  value: 2,
+                  message: "* First name should include 3 or more characters",
+                },
+              })}
+            />
+            {errors.first_name && (
+              <span className="inputError">{errors?.first_name?.message}</span>
+            )}
+          </div>
 
-          <input
-            className="input"
-            type="text"
-            placeholder="Last Name"
-            {...register("lastName", { required: false })}
-          />
+          <div className="inputErrorWrapper">
+            <input
+              className="input"
+              type="text"
+              placeholder="Last Name"
+              {...register("last_name", { required: true })}
+            />
+          </div>
 
-          <input
-            className="input"
-            type="mail"
-            placeholder="E-Mail"
-            {...register("email", { required: false })}
-          />
+          <div className="inputErrorWrapper">
+            <input
+              className="input"
+              type="mail"
+              placeholder="E-Mail"
+              {...register("email", { required: true })}
+            />
+          </div>
 
-          <input
-            className="input"
-            type="tel"
-            placeholder="+995 5__ ___ ___"
-            {...register("mobileNumber", { required: false })}
-          />
+          <div className="inputErrorWrapper">
+            <input
+              className="input"
+              type="tel"
+              placeholder="+995 5__ ___ ___"
+              {...register("phone", { required: true })}
+            />
+          </div>
         </form>
 
         <DotsOfPages formRef={formRef} />
@@ -94,8 +115,5 @@ const Container = styled.div`
       display: flex;
       flex-direction: column;
     }
-  }
-
-  .darkSide {
   }
 `;

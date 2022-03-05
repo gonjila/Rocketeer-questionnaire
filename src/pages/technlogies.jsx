@@ -1,15 +1,19 @@
 import { useState, useEffect, useRef } from "react";
-import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
+import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import styled from "styled-components";
+
+import { ADD_SKILL, DELETE_SKILL } from "../redux/actions";
+import { skills } from "../redux/selectors";
 
 import DarkComponent from "../components/dark-side";
 import DotsOfPages from "../components/page-dots";
 
 function TechnologiesPage() {
   const formRef = useRef();
-  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const skillsSelector = useSelector(skills);
 
   const {
     handleSubmit,
@@ -17,23 +21,21 @@ function TechnologiesPage() {
     // formState: { errors },
   } = useForm();
 
-  const [skills, setSkills] = useState(null);
+  const [APISkills, setAPISkills] = useState(null);
 
   useEffect(() => {
     axios
       .get(`https://bootcamp-2022.devtest.ge/api/skills`)
-      .then(result => setSkills(result.data));
+      .then(result => setAPISkills(result.data));
   }, []);
 
   const onFormSubmit = data => {
-    console.log("technology page", data);
-
-    navigate("/covid");
+    dispatch(ADD_SKILL(data));
   };
 
-  const addLanguageBtn = () => {};
-
-  const onRemoveBtn = () => {};
+  const onRemoveBtn = skillId => {
+    dispatch(DELETE_SKILL(skillId));
+  };
 
   return (
     <Container className="page">
@@ -48,14 +50,11 @@ function TechnologiesPage() {
           {/* TODO როცა ჩამოვშლი ისარი ატრიალდეს */}
           <select
             className="input select"
-            name="skills"
             {...register("skill", { required: true })}
           >
-            <option value="skill">skill</option>
-            {skills?.map(skill => (
-              <option key={skill.id} value={skill.title}>
-                {skill.title}
-              </option>
+            <option>skills</option>
+            {APISkills?.map(skill => (
+              <option key={skill.id}>{skill.title}</option>
             ))}
           </select>
 
@@ -68,35 +67,28 @@ function TechnologiesPage() {
           />
 
           <div>
-            <button
-              className="addLanguages"
-              type="button"
-              onClick={addLanguageBtn}
-            >
+            <button className="addLanguages" type="submit">
               Add Programming Language
             </button>
           </div>
         </form>
 
+        {/* FIXME გუგლ ქრომში ცუდადაა სქროლი */}
         <div className="skillsWrapper">
-          {/* TODO reduxidan skilebis chamonaTvali */}
-          <div className="choosenSkill">
-            <div>PHP</div>
-            <div>Years of Experience: 3</div>
-            <button onClick={onRemoveBtn}>
-              <img src="/images/Remove.svg" alt="remove" />
-            </button>
-          </div>
-          <div className="choosenSkill">
-            <div>React</div>
-            <div>Years of Experience: 2</div>
-            <button onClick={onRemoveBtn}>
-              <img src="/images/Remove.svg" alt="remove" />
-            </button>
-          </div>
+          {skillsSelector.length > 0
+            ? skillsSelector.map(skill => (
+                <div className="choosenSkill" key={skill.id}>
+                  <div>{skill.skill}</div>
+                  <div>Years of Experience: {skill.experiance}</div>
+                  <button onClick={() => onRemoveBtn(skill.id)}>
+                    <img src="/images/Remove.svg" alt="remove" />
+                  </button>
+                </div>
+              ))
+            : "Add skill!"}
         </div>
 
-        <DotsOfPages formRef={formRef} />
+        <DotsOfPages skillsAmounte={skillsSelector.length} />
       </div>
 
       <div className="darkSide">

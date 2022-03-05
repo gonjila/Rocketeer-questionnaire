@@ -1,10 +1,13 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 import { useEffect, useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import styled from "styled-components";
 
 import routes from "../utils/routes";
 
-function DotsOfPages({ formRef }) {
+function DotsOfPages({ formRef, skillsAmount }) {
+  const navigate = useNavigate();
   const location = useLocation();
 
   const [currentPageNumber, setCurrentPageNumber] = useState(0);
@@ -14,6 +17,18 @@ function DotsOfPages({ formRef }) {
       routes.findIndex(route => route === location.pathname)
     );
   }, [location]);
+
+  const onPreviousArrow = () => {
+    navigate(routes[currentPageNumber - 1]);
+  };
+
+  const onNextArrow = () => {
+    if (skillsAmount <= 0) {
+      alert("Choose skill");
+    } else if (!formRef) {
+      navigate(routes[currentPageNumber + 1]);
+    }
+  };
 
   const dotsClassname = pageNum => {
     if (currentPageNumber < pageNum) {
@@ -29,9 +44,9 @@ function DotsOfPages({ formRef }) {
   return (
     <Container>
       {/* TODO marto wina gverdebs unda echirebodes */}
-      <Link to="#">
+      <a onClick={onPreviousArrow}>
         <img src="/images/Previous.svg" alt="left arrow" />
-      </Link>
+      </a>
 
       <Link to="/personal-information" className={dotsClassname(1)} />
       <Link to="/technlogies" className={dotsClassname(2)} />
@@ -39,11 +54,9 @@ function DotsOfPages({ formRef }) {
       <Link to="/about-events" className={dotsClassname(4)} />
       <Link to="/submitter" className={dotsClassname(5)} />
 
-      {/* <Link to="#" onClick={onNextBtn}> */}
-      <button form={formRef?.current?.id}>
+      <button form={formRef?.current?.id} onClick={onNextArrow}>
         <img src="/images/Next.svg" alt="right arrow" />
       </button>
-      {/* </Link> */}
     </Container>
   );
 }
