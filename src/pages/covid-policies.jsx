@@ -1,10 +1,11 @@
 import { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
 
 import { ADD_COVID } from "../redux/actions";
+import { covid } from "../redux/selectors";
 
 import DarkComponent from "../components/dark-side";
 import DotsOfPages from "../components/page-dots";
@@ -13,9 +14,12 @@ function CovidPage() {
   const formRef = useRef();
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const covidSelectors = useSelector(covid);
 
-  const [covidContacted, setCovidContacted] = useState(false);
-  const [vaccinated, setVaccinated] = useState(false);
+  const [covidContacted, setCovidContacted] = useState(
+    covidSelectors?.had_covid
+  );
+  const [vaccinated, setVaccinated] = useState(covidSelectors?.vaccinated);
 
   const {
     handleSubmit,
@@ -46,7 +50,10 @@ function CovidPage() {
               <input
                 id="Office"
                 type="radio"
-                value="From Sairme Office"
+                value="from_office"
+                defaultChecked={
+                  covidSelectors?.work_preference === "from_office"
+                }
                 {...register("work_preference", { required: true })}
               />
               From Sairme Office
@@ -56,7 +63,8 @@ function CovidPage() {
               <input
                 id="Home"
                 type="radio"
-                value="From Home"
+                value="from_home"
+                defaultChecked={covidSelectors?.work_preference === "from_home"}
                 {...register("work_preference", { required: true })}
               />
               From Home
@@ -66,7 +74,8 @@ function CovidPage() {
               <input
                 id="Hybrid"
                 type="radio"
-                value="Hybrid"
+                value="hybrid"
+                defaultChecked={covidSelectors?.work_preference === "hybrid"}
                 {...register("work_preference", { required: true })}
               />
               Hybrid
@@ -83,6 +92,7 @@ function CovidPage() {
               <input
                 id="contacted"
                 type="radio"
+                defaultChecked={covidSelectors?.had_covid}
                 value
                 onClick={() => setCovidContacted(true)}
                 {...register("had_covid", { required: true })}
@@ -94,6 +104,7 @@ function CovidPage() {
               <input
                 id="noContacted"
                 type="radio"
+                defaultChecked={!covidSelectors?.had_covid}
                 value={false}
                 onClick={() => setCovidContacted(false)}
                 {...register("had_covid", { required: true })}
@@ -115,6 +126,7 @@ function CovidPage() {
               className="input"
               type="date"
               placeholder="Date"
+              defaultValue={covidSelectors?.had_covid_at}
               {...register("had_covid_at", { required: covidContacted })}
             />
             {errors?.had_covid_at && (
@@ -129,7 +141,7 @@ function CovidPage() {
               <input
                 id="vaccined"
                 type="radio"
-                // defaultChecked={}
+                defaultChecked={covidSelectors?.vaccinated}
                 value
                 onClick={() => setVaccinated(true)}
                 {...register("vaccinated", { required: true })}
@@ -141,7 +153,7 @@ function CovidPage() {
               <input
                 id="notVaccined"
                 type="radio"
-                // defaultChecked={}
+                defaultChecked={!covidSelectors?.vaccinated}
                 value={false}
                 onClick={() => setVaccinated(false)}
                 {...register("vaccinated", { required: true })}
@@ -162,6 +174,7 @@ function CovidPage() {
               className="input"
               type="date"
               placeholder="Date"
+              defaultValue={covidSelectors?.vaccinated_at}
               {...register("vaccinated_at", { required: vaccinated })}
             />
             {errors?.vaccinated_at && (
