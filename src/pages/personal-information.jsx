@@ -1,10 +1,11 @@
 import { useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
 
 import { ADD_IDENTITY } from "../redux/actions";
+import { identity } from "../redux/selectors";
 
 import DarkComponent from "../components/dark-side";
 import DotsOfPages from "../components/page-dots";
@@ -13,6 +14,7 @@ function PersonalInformationPage() {
   const formRef = useRef();
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const identitySelectors = useSelector(identity);
 
   const {
     handleSubmit,
@@ -41,6 +43,7 @@ function PersonalInformationPage() {
               className="input"
               type="text"
               placeholder="First Name"
+              defaultValue={identitySelectors?.first_name}
               {...register("first_name", {
                 required: "* First name is required",
                 minLength: {
@@ -59,6 +62,7 @@ function PersonalInformationPage() {
               className="input"
               type="text"
               placeholder="Last Name"
+              defaultValue={identitySelectors?.last_name}
               {...register("last_name", {
                 required: "* Last name is required",
                 minLength: {
@@ -77,6 +81,7 @@ function PersonalInformationPage() {
               className="input"
               type="mail"
               placeholder="E-Mail"
+              defaultValue={identitySelectors?.email}
               {...register("email", {
                 required: "* Email is required",
                 pattern: {
@@ -95,6 +100,7 @@ function PersonalInformationPage() {
               className="input"
               type="tel"
               placeholder="+995 5__ ___ ___"
+              defaultValue={identitySelectors?.phone}
               {...register("phone", {
                 required: false,
                 pattern: {

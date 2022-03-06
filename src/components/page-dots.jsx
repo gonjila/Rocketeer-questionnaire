@@ -44,7 +44,6 @@ function DotsOfPages({ formRef, skillsAmount }) {
 
   return (
     <Container>
-      {/* TODO marto wina gverdebs unda echirebodes */}
       <a onClick={onPreviousArrow}>
         <img src="/images/Previous.svg" alt="left arrow" />
       </a>
