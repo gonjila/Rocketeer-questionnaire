@@ -7,6 +7,7 @@ import styled from "styled-components";
 
 function ApplicationsPage() {
   const [apiData, setApiData] = useState([]);
+  const [apiSkills, setApiSkills] = useState([]);
   const [openedDetails, setOpenedDetails] = useState(null);
 
   // fdaba86a-543c-4caa-a94c-9714eebc4d1e
@@ -17,6 +18,10 @@ function ApplicationsPage() {
         { headers: { accept: "application/json" } }
       )
       .then(result => setApiData(result.data));
+
+    axios
+      .get(`https://bootcamp-2022.devtest.ge/api/skills`)
+      .then(result => setApiSkills(result.data));
   }, []);
 
   const changeOpenedDetails = number => {
@@ -67,10 +72,10 @@ function ApplicationsPage() {
 
                 <div className="answersComponent skillset">
                   <h3>Skillset</h3>
-                  {/* TODO სკილების სახელი გამოვაჩინო */}
+
                   {data.skills.map(skill => (
                     <div key={skill.id}>
-                      <p>{skill.id}</p>
+                      <p>{apiSkills[skill.id]?.title}</p>
                       <p>Years of Experience: {skill.experience}</p>
                     </div>
                   ))}
