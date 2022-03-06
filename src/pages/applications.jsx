@@ -1,7 +1,20 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
+import axios from "axios";
+import { useEffect, useState } from "react";
 import styled from "styled-components";
 
 function ApplicationsPage() {
+  const [apiData, setApiData] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get(
+        `https://bootcamp-2022.devtest.ge/api/applications?token=89nOpas%7Casdanjjh%5E%26as`,
+        { headers: { accept: "application/json" } }
+      )
+      .then(result => setApiData(result.data));
+  }, []);
+
   return (
     <Container>
       <h1 className="applicationsTitle">Submitted Applications</h1>
