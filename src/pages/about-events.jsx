@@ -1,10 +1,11 @@
 import { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
 
 import { ADD_EVENT } from "../redux/actions";
+import { event } from "../redux/selectors";
 
 import DarkComponent from "../components/dark-side";
 import DotsOfPages from "../components/page-dots";
@@ -13,8 +14,11 @@ function AboutEventsPage() {
   const formRef = useRef();
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const eventSelectors = useSelector(event);
 
-  const [attendance, setAttendance] = useState(false);
+  const [attendance, setAttendance] = useState(
+    eventSelectors?.will_organize_devtalk
+  );
 
   const {
     handleSubmit,
@@ -44,6 +48,7 @@ function AboutEventsPage() {
               <input
                 id="attend"
                 type="radio"
+                defaultChecked={eventSelectors?.will_organize_devtalk}
                 value
                 onClick={() => setAttendance(true)}
                 {...register("will_organize_devtalk", { required: true })}
@@ -54,6 +59,7 @@ function AboutEventsPage() {
               <input
                 id="notAttend"
                 type="radio"
+                defaultChecked={!eventSelectors?.will_organize_devtalk}
                 value={false}
                 onClick={() => setAttendance(false)}
                 {...register("will_organize_devtalk", { required: true })}
@@ -74,6 +80,7 @@ function AboutEventsPage() {
               placeholder="I would..."
               cols="30"
               rows="10"
+              defaultValue={eventSelectors?.devtalk_topic}
               {...register("devtalk_topic", { required: attendance })}
             />
             {errors?.devtalk_topic && (
@@ -88,6 +95,7 @@ function AboutEventsPage() {
               placeholder="I..."
               cols="30"
               rows="10"
+              defaultValue={eventSelectors?.something_special}
               {...register("something_special", { required: true })}
             />
             {errors?.something_special && (
