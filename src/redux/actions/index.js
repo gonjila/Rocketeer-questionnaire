@@ -9,7 +9,6 @@ export const ADD_SKILL = data => ({
   type: types.ADD_SKILL_TYPE,
   payload: data,
 });
-
 export const DELETE_SKILL = skillId => ({
   type: types.DELETE_SKILL_TYPE,
   payload: skillId,
@@ -24,3 +23,5 @@ export const ADD_EVENT = data => ({
   type: types.ADD_EVENT_TYPE,
   payload: data,
 });
+
+export const UPLOAD_DATA = () => ({ type: types.UPLOAD_DATA_TYPE });

@@ -1,8 +1,14 @@
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
 import styled from "styled-components";
 
+import { UPLOAD_DATA } from "../redux/actions";
+
 function SubmitterPage() {
+  const dispatch = useDispatch();
+
   const onSubmitClick = () => {
+    dispatch(UPLOAD_DATA());
     console.log("submit was occured!");
   };
 

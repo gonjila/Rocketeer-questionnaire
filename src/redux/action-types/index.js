@@ -7,4 +7,4 @@ export const ADD_COVID_TYPE = "ADD_COVID_TYPE";
 
 export const ADD_EVENT_TYPE = "ADD_EVENT_TYPE";
 
-export const ADD_FORM_DATA_TYPE = "ADD_FORM_DATA";
+export const UPLOAD_DATA_TYPE = "UPLOAD_DATA";

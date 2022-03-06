@@ -1,3 +1,5 @@
+import axios from "axios";
+
 import * as types from "../action-types";
 
 const initialState = {
@@ -34,6 +36,29 @@ export const reducer = (state = initialState, action) => {
     }
     case types.ADD_EVENT_TYPE: {
       return { ...state, event: action.payload };
+    }
+    case types.UPLOAD_DATA_TYPE: {
+      // fdaba86a-543c-4caa-a94c-9714eebc4d1e
+      axios
+        .post(
+          `https://bootcamp-2022.devtest.ge/api/application`,
+          {
+            token: "89nOpas|asdanjjh^&as",
+            ...state.identity,
+            skills: state.skills,
+            ...state.covid,
+            ...state.event,
+          },
+          { headers: { "content-type": "application/json" } }
+        )
+        .then(res => console.log("server response", res));
+
+      return {
+        identity: {},
+        skills: [],
+        covid: {},
+        event: {},
+      };
     }
     default: {
       return state;
