@@ -1,7 +1,7 @@
 const routes = [
   "/",
   "/personal-information",
-  "/technlogies",
+  "/technologies",
   "/covid",
   "/about-events",
   "/submitter",

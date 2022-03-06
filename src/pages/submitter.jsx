@@ -6,6 +6,7 @@ function SubmitterPage() {
     console.log("submit was occured!");
   };
 
+  // TODO თუ რომელიმე გვერდზე სავალდებულო პასუხები არაა შევსებული გადაამისამართოს მანდ.
   return (
     <Container>
       <Link to="/gratitude">

@@ -19,7 +19,7 @@ function AboutEventsPage() {
   const {
     handleSubmit,
     register,
-    // formState: { errors },
+    formState: { errors },
   } = useForm();
 
   const onFormSubmit = data => {
@@ -38,16 +38,15 @@ function AboutEventsPage() {
           onSubmit={handleSubmit(onFormSubmit)}
           ref={formRef}
         >
-          <div className="radiosWrapper">
+          <div className="inputErrorWrapper radiosWrapper">
             <p>Would you attend Devtalks and maybe also organize your own?</p>
             <label htmlFor="attend">
               <input
                 id="attend"
                 type="radio"
                 value="Yes"
-                checked={attendance}
                 onClick={() => setAttendance(true)}
-                {...register("attendance", { required: true })}
+                {...register("will_organize_devtalk", { required: true })}
               />{" "}
               Yes
             </label>
@@ -56,33 +55,44 @@ function AboutEventsPage() {
                 id="notAttend"
                 type="radio"
                 value="No"
-                checked={!attendance}
                 onClick={() => setAttendance(false)}
-                {...register("attendance", { required: true })}
+                {...register("will_organize_devtalk", { required: true })}
               />{" "}
               No
             </label>
+            {errors?.will_organize_devtalk && (
+              <span className="inputError">This field is required</span>
+            )}
           </div>
 
-          <div style={attendance ? {} : { display: "none" }}>
+          <div
+            className="inputErrorWrapper"
+            style={attendance ? {} : { display: "none" }}
+          >
             <p>What would you speak about at Devtalk?</p>
             <textarea
               placeholder="I would..."
               cols="30"
               rows="10"
-              {...register("devTalk", { required: false })}
+              {...register("devtalk_topic", { required: attendance })}
             />
+            {errors?.devtalk_topic && (
+              <span className="inputError">This field is required</span>
+            )}
           </div>
 
-          <div>
+          <div className="inputErrorWrapper">
             <p>Tell us something special</p>
             <textarea
               id="specialArea"
               placeholder="I..."
               cols="30"
               rows="10"
-              {...register("special", { required: false })}
+              {...register("something_special", { required: true })}
             />
+            {errors?.something_special && (
+              <span className="inputError">This field is required</span>
+            )}
           </div>
         </form>
 

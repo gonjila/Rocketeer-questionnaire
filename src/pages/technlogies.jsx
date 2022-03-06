@@ -18,7 +18,7 @@ function TechnologiesPage() {
   const {
     handleSubmit,
     register,
-    // formState: { errors },
+    formState: { errors },
   } = useForm();
 
   const [APISkills, setAPISkills] = useState(null);
@@ -48,23 +48,32 @@ function TechnologiesPage() {
           ref={formRef}
         >
           {/* TODO როცა ჩამოვშლი ისარი ატრიალდეს */}
-          <select
-            className="input select"
-            {...register("skill", { required: true })}
-          >
-            <option>skills</option>
-            {APISkills?.map(skill => (
-              <option key={skill.id}>{skill.title}</option>
-            ))}
-          </select>
+          <div className="inputErrorWrapper">
+            <select className="input select" {...register("skill")}>
+              <option>skills</option>
+              {APISkills?.map(skill => (
+                <option key={skill.id}>{skill.title}</option>
+              ))}
+            </select>
+            {errors?.skill && (
+              <span className="inputError">{errors?.skill?.message}</span>
+            )}
+          </div>
 
-          <input
-            className="input"
-            type="number"
-            min={0}
-            placeholder="Experience Duration in Years"
-            {...register("experiance", { required: true })}
-          />
+          <div className="inputErrorWrapper">
+            <input
+              className="input"
+              type="number"
+              min={0}
+              placeholder="Experience Duration in Years"
+              {...register("experience", {
+                required: "* Experience is required",
+              })}
+            />
+            {errors?.experience && (
+              <span className="inputError">{errors?.experience?.message}</span>
+            )}
+          </div>
 
           <div>
             <button className="addLanguages" type="submit">
@@ -79,7 +88,7 @@ function TechnologiesPage() {
             ? skillsSelector.map(skill => (
                 <div className="choosenSkill" key={skill.id}>
                   <div>{skill.skill}</div>
-                  <div>Years of Experience: {skill.experiance}</div>
+                  <div>Years of Experience: {skill.experience}</div>
                   <button onClick={() => onRemoveBtn(skill.id)}>
                     <img src="/images/Remove.svg" alt="remove" />
                   </button>
@@ -88,7 +97,7 @@ function TechnologiesPage() {
             : "Add skill!"}
         </div>
 
-        <DotsOfPages skillsAmounte={skillsSelector.length} />
+        <DotsOfPages skillsAmount={skillsSelector?.length} />
       </div>
 
       <div className="darkSide">
