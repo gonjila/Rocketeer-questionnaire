@@ -9,7 +9,6 @@ function SubmitterPage() {
 
   const onSubmitClick = () => {
     dispatch(UPLOAD_DATA());
-    console.log("submit was occured!");
   };
 
   // TODO თუ რომელიმე გვერდზე სავალდებულო პასუხები არაა შევსებული გადაამისამართოს მანდ.

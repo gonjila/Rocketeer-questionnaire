@@ -14,7 +14,7 @@ function ApplicationsPage() {
   useEffect(() => {
     axios
       .get(
-        `https://bootcamp-2022.devtest.ge/api/applications?token=89nOpas%7Casdanjjh%5E%26as`,
+        `https://bootcamp-2022.devtest.ge/api/applications?token=fdaba86a-543c-4caa-a94c-9714eebc4d1e`,
         { headers: { accept: "application/json" } }
       )
       .then(result => setApiData(result.data));
@@ -31,6 +31,15 @@ function ApplicationsPage() {
   return (
     <Container>
       <h1 className="applicationsTitle">Submitted Applications</h1>
+
+      {apiData.length === 0 && (
+        <h1
+          className="applicationsTitle"
+          style={{ fontSize: "2rem", color: "var(--primaryRed)" }}
+        >
+          Go back and start questionnaire
+        </h1>
+      )}
 
       <div id="resultsWrapper">
         {apiData &&

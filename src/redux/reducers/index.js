@@ -38,12 +38,11 @@ export const reducer = (state = initialState, action) => {
       return { ...state, event: action.payload };
     }
     case types.UPLOAD_DATA_TYPE: {
-      // fdaba86a-543c-4caa-a94c-9714eebc4d1e
       axios
         .post(
           `https://bootcamp-2022.devtest.ge/api/application`,
           {
-            token: "89nOpas|asdanjjh^&as",
+            token: "fdaba86a-543c-4caa-a94c-9714eebc4d1e",
             ...state.identity,
             skills: state.skills,
             ...state.covid,

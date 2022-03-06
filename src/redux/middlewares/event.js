@@ -1,9 +1,13 @@
 /* eslint-disable consistent-return */
 /* eslint-disable no-param-reassign */
-import * as types from "../action-types";
+import { ADD_EVENT_TYPE } from "../action-types";
 
 export const MIDDLE_EVENT = () => next => action => {
-  if (action.type === types.ADD_EVENT_TYPE) {
+  if (action.type === ADD_EVENT_TYPE) {
+    if (action.payload.devtalk_topic === "") {
+      action.payload.devtalk_topic = "No information";
+    }
+
     switch (action.payload.will_organize_devtalk) {
       case "true": {
         action.payload.will_organize_devtalk = true;

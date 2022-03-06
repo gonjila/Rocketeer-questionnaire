@@ -1,10 +1,16 @@
 /* eslint-disable consistent-return */
 /* eslint-disable no-param-reassign */
-import * as types from "../action-types";
+import { ADD_COVID_TYPE } from "../action-types";
 
 export const MIDDLE_COVID = () => next => action => {
-  if (action.type === types.ADD_COVID_TYPE) {
-    // action.payload.had_covid
+  if (action.type === ADD_COVID_TYPE) {
+    if (action.payload.had_covid_at === "") {
+      action.payload.had_covid_at = "1980-01-01";
+    }
+    if (action.payload.vaccinated_at === "") {
+      action.payload.vaccinated_at = "1980-01-01";
+    }
+
     switch (action.payload.had_covid) {
       case "true": {
         action.payload.had_covid = true;
