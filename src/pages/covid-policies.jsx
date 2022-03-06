@@ -83,7 +83,7 @@ function CovidPage() {
               <input
                 id="contacted"
                 type="radio"
-                value="Yes"
+                value
                 onClick={() => setCovidContacted(true)}
                 {...register("had_covid", { required: true })}
               />
@@ -94,7 +94,7 @@ function CovidPage() {
               <input
                 id="noContacted"
                 type="radio"
-                value="No"
+                value={false}
                 onClick={() => setCovidContacted(false)}
                 {...register("had_covid", { required: true })}
               />
@@ -129,7 +129,7 @@ function CovidPage() {
               <input
                 id="vaccined"
                 type="radio"
-                value="Yes"
+                value
                 onClick={() => setVaccinated(true)}
                 {...register("vaccinated", { required: true })}
               />
@@ -140,7 +140,7 @@ function CovidPage() {
               <input
                 id="notVaccined"
                 type="radio"
-                value="No"
+                value={false}
                 onClick={() => setVaccinated(false)}
                 {...register("vaccinated", { required: true })}
               />

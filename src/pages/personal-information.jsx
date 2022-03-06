@@ -98,9 +98,9 @@ function PersonalInformationPage() {
               {...register("phone", {
                 required: false,
                 pattern: {
-                  value: /^\+[1-9]{3}\s[0-9]{9}$/g,
+                  value: /^\+[1-9]{3}[0-9]{9}$/g,
                   message:
-                    "* Enter the phone number in the correct format (+995 555555555)",
+                    "* Enter the phone number in the correct format (+995555555555)",
                 },
               })}
             />

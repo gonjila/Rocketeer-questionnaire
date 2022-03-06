@@ -49,10 +49,12 @@ function TechnologiesPage() {
         >
           {/* TODO როცა ჩამოვშლი ისარი ატრიალდეს */}
           <div className="inputErrorWrapper">
-            <select className="input select" {...register("skill")}>
-              <option>skills</option>
+            <select className="input select" {...register("id")}>
+              <option value={0}>skills</option>
               {APISkills?.map(skill => (
-                <option key={skill.id}>{skill.title}</option>
+                <option key={skill.id} value={skill.id}>
+                  {skill.title}
+                </option>
               ))}
             </select>
             {errors?.skill && (
@@ -87,7 +89,7 @@ function TechnologiesPage() {
           {skillsSelector.length > 0
             ? skillsSelector.map(skill => (
                 <div className="choosenSkill" key={skill.id}>
-                  <div>{skill.skill}</div>
+                  <div>{APISkills && APISkills[skill.id - 1].title}</div>
                   <div>Years of Experience: {skill.experience}</div>
                   <button onClick={() => onRemoveBtn(skill.id)}>
                     <img src="/images/Remove.svg" alt="remove" />

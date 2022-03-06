@@ -44,7 +44,7 @@ function AboutEventsPage() {
               <input
                 id="attend"
                 type="radio"
-                value="Yes"
+                value
                 onClick={() => setAttendance(true)}
                 {...register("will_organize_devtalk", { required: true })}
               />{" "}
@@ -54,7 +54,7 @@ function AboutEventsPage() {
               <input
                 id="notAttend"
                 type="radio"
-                value="No"
+                value={false}
                 onClick={() => setAttendance(false)}
                 {...register("will_organize_devtalk", { required: true })}
               />{" "}

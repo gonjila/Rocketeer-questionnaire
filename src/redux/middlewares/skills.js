@@ -5,11 +5,9 @@ export const MIDDLE_SKILL = store => next => action => {
   if (action.type === ADD_SKILL_TYPE) {
     const includeSkill = store
       .getState()
-      .skills.findIndex(
-        skillObject => skillObject.skill === action.payload.skill
-      );
+      .skills.findIndex(skillObject => skillObject.id === action.payload.id);
 
-    if (action.payload.skill === "skills") {
+    if (action.payload.id == 0) {
       alert("Choose skill");
     } else if (includeSkill === -1) {
       next(action);
