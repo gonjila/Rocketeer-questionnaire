@@ -42,7 +42,7 @@ export const reducer = (state = initialState, action) => {
         .post(
           `https://bootcamp-2022.devtest.ge/api/application`,
           {
-            token: "fdaba86a-543c-4caa-a94c-9714eebc4d1e",
+            token: process.env.REACT_APP_MY_API_TOKEN,
             ...state.identity,
             skills: state.skills,
             ...state.covid,

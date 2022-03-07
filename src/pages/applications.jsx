@@ -10,11 +10,10 @@ function ApplicationsPage() {
   const [apiSkills, setApiSkills] = useState([]);
   const [openedDetails, setOpenedDetails] = useState(null);
 
-  // fdaba86a-543c-4caa-a94c-9714eebc4d1e
   useEffect(() => {
     axios
       .get(
-        `https://bootcamp-2022.devtest.ge/api/applications?token=fdaba86a-543c-4caa-a94c-9714eebc4d1e`,
+        `https://bootcamp-2022.devtest.ge/api/applications?token=${process.env.REACT_APP_MY_API_TOKEN}`,
         { headers: { accept: "application/json" } }
       )
       .then(result => setApiData(result.data));
