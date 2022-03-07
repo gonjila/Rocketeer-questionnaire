@@ -49,7 +49,13 @@ function ApplicationsPage() {
                 onClick={() => changeOpenedDetails(index)}
               >
                 <div>{index}</div>
-                <div>
+                <div
+                  style={
+                    openedDetails === index
+                      ? {}
+                      : { transform: "rotate(180deg)" }
+                  }
+                >
                   <img src="/images/whiteVector.svg" alt="arrow" />
                 </div>
               </div>

@@ -27,7 +27,7 @@ function PersonalInformationPage() {
 
     navigate("/technologies");
   };
-  // TODO თუ input არ არის ვალიდური მაშინ border უნდა გაუწითლდეს
+
   return (
     <Container className="page">
       <div className="lightSide">

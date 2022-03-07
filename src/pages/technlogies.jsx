@@ -47,7 +47,6 @@ function TechnologiesPage() {
           onSubmit={handleSubmit(onFormSubmit)}
           ref={formRef}
         >
-          {/* TODO როცა ჩამოვშლი ისარი ატრიალდეს */}
           <div className="inputErrorWrapper">
             <select className="input select" {...register("id")}>
               <option value={0}>skills</option>
@@ -84,7 +83,6 @@ function TechnologiesPage() {
           </div>
         </form>
 
-        {/* FIXME გუგლ ქრომში ცუდადაა სქროლი */}
         <div className="skillsWrapper">
           {skillsSelector.length > 0
             ? skillsSelector.map(skill => (
@@ -158,7 +156,7 @@ const Container = styled.div`
     .skillsWrapper {
       height: 300px;
       margin: 0 0 160px 15px;
-      overflow-y: scroll;
+      overflow-y: auto;
 
       display: flex;
       flex-direction: column;
