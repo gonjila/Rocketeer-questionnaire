@@ -23,8 +23,8 @@
     "airbnb",
     "eslint:recommended",
     "plugin:react/recommended",
-    "plugin:react-hooks/recommended", // React hooks rules
-    "plugin:jsx-a11y/recommended", // Accessibility rules
+    "plugin:react-hooks/recommended",
+    "plugin:jsx-a11y/recommended",
     "prettier"
   ],
   "plugins": ["react", "prettier", "jsx-a11y"],
@@ -40,6 +40,12 @@
     "react/prop-types": "off",
     "array-callback-return": "off",
     "import/prefer-default-export": "off",
-    "jsx-a11y/anchor-is-valid": "off"
+    "jsx-a11y/anchor-is-valid": "off",
+    "react/button-has-type": "off",
+    "default-param-last": "off",
+    "arrow-body-style": 1,
+    "react/self-closing-comp": 1,
+    "react/jsx-props-no-spreading": 0,
+    "eqeqeq": 0
   }
 }

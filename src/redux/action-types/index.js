@@ -1,0 +1,10 @@
+export const ADD_IDENTITY_TYPE = "ADD_IDENTITY_TYPE";
+
+export const ADD_SKILL_TYPE = "ADD_SKILL";
+export const DELETE_SKILL_TYPE = "DELETE_SKILL";
+
+export const ADD_COVID_TYPE = "ADD_COVID_TYPE";
+
+export const ADD_EVENT_TYPE = "ADD_EVENT_TYPE";
+
+export const UPLOAD_DATA_TYPE = "UPLOAD_DATA";

@@ -1,11 +1,120 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300&family=Rowdies:wght@300&display=swap");
+
+:root {
+  --redberryRed: #fe3b1f;
+  --primaryBg: radial-gradient(50% 50% at 50% 50%, #0c0d0e 0%, #151718 73.44%);
+  --primaryStroke: #525557;
+  --primaryRed: #eb3535;
+}
+
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell",
-    "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  padding: 0;
+  font-family: "Montserrat", "Rowdies";
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+.page {
+  width: 100%;
+  min-height: 100vh;
+}
+.page > .lightSide {
+  width: 50%;
+  padding: 65px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+.page > .darkSide {
+  width: 50%;
+  padding: 65px 0;
+  background-image: var(--primaryBg);
+}
+
+.title {
+  width: 788px;
+  margin: 0;
+  text-align: center;
+
+  color: var(--redberryRed);
+  font-family: Rowdies;
+  font-weight: 400;
+  font-size: 64px;
+  line-height: 79px;
+}
+
+.redberryBtn {
+  background-color: var(--redberryRed);
+  border-radius: 50px;
+  border: none;
+  cursor: pointer;
+
+  color: #fff;
+  font-family: Montserrat;
+  font-size: 24px;
+  line-height: 29px;
+}
+
+.inputErrorWrapper {
+  /* position: relative; */
+  display: flex;
+  flex-direction: column;
+}
+.inputErrorWrapper:not(:last-child) {
+  margin-bottom: 35px;
+}
+input[type="radio"] {
+  accent-color: var(--primaryRed);
+}
+.input {
+  width: 455px;
+  height: 54px;
+  padding: 15px 20px 15px 55px;
+  border: 1px solid var(--primaryStroke);
+  outline: none;
+
+  color: #454545;
+  font-family: Montserrat;
+  font-style: italic;
+  font-size: 14px;
+  line-height: 17px;
+}
+input:invalid {
+  border: 1px solid var(--redberryRed);
+}
+.inputError {
+  margin: 5px 0 0 55px;
+  text-align: left;
+  color: var(--redberryRed);
+  font-style: italic;
+  font-size: 11px;
+  line-height: 13px;
+  /* position: absolute;
+  bottom: -20px; */
+}
+
+.radiosWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.radiosWrapper > p {
+  width: 447px;
+  margin: 0 0 24px;
+
+  font-family: Montserrat;
+  font-size: 18px;
+  line-height: 22px;
+}
+.radiosWrapper > label {
+  margin-left: 10px;
+}
+.radiosWrapper > label:not(:last-child) {
+  margin-bottom: 16px;
 }
