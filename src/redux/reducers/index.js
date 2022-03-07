@@ -50,6 +50,7 @@ export const reducer = (state = initialState, action) => {
           },
           { headers: { "content-type": "application/json" } }
         )
+        // eslint-disable-next-line no-console
         .then(res => console.log("server response", res));
 
       return {
