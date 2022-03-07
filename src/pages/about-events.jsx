@@ -77,6 +77,7 @@ function AboutEventsPage() {
           >
             <p>What would you speak about at Devtalk?</p>
             <textarea
+              className={errors.devtalk_topic ? "invalidInput" : ""}
               placeholder="I would..."
               cols="30"
               rows="10"
@@ -92,6 +93,7 @@ function AboutEventsPage() {
             <p>Tell us something special</p>
             <textarea
               id="specialArea"
+              className={errors.something_special ? "invalidInput" : ""}
               placeholder="I..."
               cols="30"
               rows="10"
@@ -146,6 +148,7 @@ const Container = styled.div`
           width: 100%;
           height: 122px;
           padding: 20px 24px;
+          outline: none;
           resize: none;
 
           font-family: Montserrat;

@@ -64,9 +64,9 @@ function TechnologiesPage() {
 
           <div className="inputErrorWrapper">
             <input
-              className="input"
+              className={errors.experience ? "input invalidInput" : "input"}
               type="number"
-              min={0}
+              min={0.5}
               placeholder="Experience Duration in Years"
               {...register("experience", {
                 required: "* Experience is required",

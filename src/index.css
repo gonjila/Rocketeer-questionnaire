@@ -85,7 +85,7 @@ input[type="radio"] {
   font-size: 14px;
   line-height: 17px;
 }
-input:invalid {
+.invalidInput {
   border: 1px solid var(--redberryRed);
 }
 .inputError {

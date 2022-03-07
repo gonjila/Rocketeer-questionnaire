@@ -40,7 +40,7 @@ function PersonalInformationPage() {
         >
           <div className="inputErrorWrapper">
             <input
-              className="input"
+              className={errors.first_name ? "input invalidInput" : "input"}
               type="text"
               placeholder="First Name"
               defaultValue={identitySelectors?.first_name}
@@ -59,7 +59,7 @@ function PersonalInformationPage() {
 
           <div className="inputErrorWrapper">
             <input
-              className="input"
+              className={errors.last_name ? "input invalidInput" : "input"}
               type="text"
               placeholder="Last Name"
               defaultValue={identitySelectors?.last_name}
@@ -78,7 +78,7 @@ function PersonalInformationPage() {
 
           <div className="inputErrorWrapper">
             <input
-              className="input"
+              className={errors.email ? "input invalidInput" : "input"}
               type="mail"
               placeholder="E-Mail"
               defaultValue={identitySelectors?.email}
@@ -97,7 +97,7 @@ function PersonalInformationPage() {
 
           <div className="inputErrorWrapper">
             <input
-              className="input"
+              className={errors.phone ? "input invalidInput" : "input"}
               type="tel"
               placeholder="+995 5__ ___ ___"
               defaultValue={identitySelectors?.phone}

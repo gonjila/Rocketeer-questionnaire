@@ -123,7 +123,7 @@ function CovidPage() {
             <p>When?</p>
 
             <input
-              className="input"
+              className={errors.had_covid_at ? "input invalidInput" : "input"}
               type="date"
               placeholder="Date"
               defaultValue={covidSelectors?.had_covid_at}
@@ -171,7 +171,7 @@ function CovidPage() {
           >
             <p>When did you get your last covid vaccine?</p>
             <input
-              className="input"
+              className={errors.vaccinated_at ? "input invalidInput" : "input"}
               type="date"
               placeholder="Date"
               defaultValue={covidSelectors?.vaccinated_at}
