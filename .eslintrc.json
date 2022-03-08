@@ -46,6 +46,7 @@
     "arrow-body-style": 1,
     "react/self-closing-comp": 1,
     "react/jsx-props-no-spreading": 0,
-    "eqeqeq": 0
+    "eqeqeq": 0,
+    "jsx-a11y/label-has-associated-control": 0
   }
 }

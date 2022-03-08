@@ -1,9 +1,9 @@
-/* eslint-disable jsx-a11y/no-static-element-interactions */
-/* eslint-disable jsx-a11y/click-events-have-key-events */
-/* eslint-disable jsx-a11y/label-has-associated-control */
-import axios from "axios";
 import { useEffect, useState } from "react";
+import axios from "axios";
 import styled from "styled-components";
+
+import UserInsights from "../components/user-insights";
+import CovidSituation from "../components/covid-situation";
 
 function ApplicationsPage() {
   const [apiData, setApiData] = useState([]);
@@ -44,7 +44,7 @@ function ApplicationsPage() {
         {apiData &&
           apiData.slice(0, 10).map((data, index) => (
             <div className="applicationResult" key={Math.random()}>
-              <div
+              <button
                 className="resultHead"
                 onClick={() => changeOpenedDetails(index)}
               >
@@ -58,7 +58,7 @@ function ApplicationsPage() {
                 >
                   <img src="/images/whiteVector.svg" alt="arrow" />
                 </div>
-              </div>
+              </button>
 
               <div
                 className="resultBody"
@@ -95,132 +95,9 @@ function ApplicationsPage() {
                   ))}
                 </div>
 
-                <div className="answersComponent covidSituation">
-                  <h3>Covid Situation</h3>
+                <CovidSituation data={data} />
 
-                  <div className="radiosWrapper">
-                    <p>how would you prefer to work?</p>
-                    <label>
-                      <input
-                        type="radio"
-                        checked={data.work_preference === "from_office"}
-                        readOnly
-                      />{" "}
-                      From Sairme Office
-                    </label>
-                    <label>
-                      <input
-                        type="radio"
-                        checked={data.work_preference === "from_home"}
-                        readOnly
-                      />{" "}
-                      From Home
-                    </label>
-                    <label>
-                      <input
-                        type="radio"
-                        checked={data.work_preference === "hybrid"}
-                        readOnly
-                      />
-                      Hybrid
-                    </label>
-                  </div>
-
-                  <div className="radiosWrapper">
-                    <p>Did you have covid 19?</p>
-
-                    <label>
-                      <input type="radio" checked={data.had_covid} readOnly />{" "}
-                      Yes
-                    </label>
-                    <label>
-                      <input type="radio" checked={!data.had_covid} readOnly />{" "}
-                      No
-                    </label>
-                  </div>
-
-                  <div>
-                    <p>When did you have covid 19?</p>
-
-                    <input
-                      className="input"
-                      type="date"
-                      value={data.had_covid_at}
-                      readOnly
-                    />
-                  </div>
-
-                  <div className="radiosWrapper">
-                    <p>Have you been vaccinated?</p>
-
-                    <label>
-                      <input type="radio" checked={data.vaccinated} readOnly />{" "}
-                      Yes
-                    </label>
-                    <label>
-                      <input type="radio" checked={!data.vaccinated} readOnly />{" "}
-                      No
-                    </label>
-                  </div>
-
-                  <div>
-                    <p>When did you get covid vaccine?</p>
-
-                    <input
-                      className="input"
-                      type="date"
-                      value={data.vaccinated_at}
-                      readOnly
-                    />
-                  </div>
-                </div>
-
-                <div className="answersComponent insights">
-                  <h3>Insigts</h3>
-
-                  <div className="radiosWrapper">
-                    <p>
-                      Would you attend Devtalks and maybe also organize your
-                      own?
-                    </p>
-                    <label>
-                      <input
-                        type="radio"
-                        checked={data.will_organize_devtalk}
-                        readOnly
-                      />{" "}
-                      Yes
-                    </label>
-                    <label>
-                      <input
-                        type="radio"
-                        checked={!data.will_organize_devtalk}
-                        readOnly
-                      />{" "}
-                      No
-                    </label>
-                  </div>
-
-                  <div>
-                    <p>What would you speak about at Devtalk?</p>
-                    <textarea
-                      cols="30"
-                      rows="10"
-                      value={data.devtalk_topic}
-                      readOnly
-                    />
-                  </div>
-
-                  <div>
-                    <p>Tell us somthing special</p>
-                    <textarea
-                      cols="30"
-                      rows="10"
-                      value={data.something_special}
-                      readOnly
-                    />
-                  </div>
-                </div>
+                <UserInsights data={data} />
               </div>
             </div>
           ))}
@@ -263,6 +140,7 @@ const Container = styled.div`
         height: 52px;
         padding: 0 30px;
         background-color: var(--redberryRed);
+        border: none;
 
         display: flex;
         align-items: center;
