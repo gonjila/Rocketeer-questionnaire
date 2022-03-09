@@ -47,16 +47,71 @@ const Container = styled.div`
     margin-bottom: 1.125rem;
 
     button {
-      width: 24.6875rem;
-      height: 4.9375rem;
+      width: 24.5rem;
+      height: 5rem;
     }
   }
   #toApplications {
-    text-decoration: underline;
+    /* text-decoration: underline; */
   }
   img {
     width: 25.625rem;
     height: 23.2781rem;
     transform: rotate(27.28deg);
+  }
+
+  @media (max-width: 800px) {
+    h1 {
+      font-size: 50px;
+      margin-bottom: 65px;
+    }
+    a {
+      font-size: 15px;
+      line-height: 18px;
+    }
+    #toPersonalInformation {
+      margin-bottom: 10px;
+
+      button {
+        font-size: 15px;
+        line-height: 18px;
+        width: 245px;
+        height: 50px;
+      }
+    }
+    img {
+      width: 256px;
+      height: 232px;
+    }
+  }
+  @media (max-width: 550px) {
+    h1 {
+      font-size: 40px;
+      margin-bottom: 45px;
+    }
+  }
+  @media (max-width: 430px) {
+    h1 {
+      font-size: 30px;
+      margin-bottom: 0px;
+    }
+    a {
+      font-size: 12px;
+      line-height: 14px;
+    }
+    #toPersonalInformation {
+      margin-bottom: 10px;
+
+      button {
+        font-size: 12px;
+        line-height: 14px;
+        width: 200px;
+        height: 40px;
+      }
+    }
+    img {
+      width: 224px;
+      height: 192px;
+    }
   }
 `;

@@ -28,7 +28,7 @@ const Container = styled.div`
   .child {
     width: 700px;
     max-width: 95%;
-    height: 38rem;
+    /* height: 38rem; */
 
     font-family: Montserrat;
     font-style: normal;

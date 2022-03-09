@@ -30,13 +30,32 @@ const Container = styled.div`
   align-items: center;
 
   h1 {
-    width: 1066px;
-    height: 191px;
+    max-width: 95%;
+    text-align: center;
 
     color: var(--redberryRed);
     font-family: Rowdies;
     font-weight: normal;
-    font-size: 96px;
-    line-height: 119px;
+    font-size: 6rem;
+    line-height: 7.5rem;
+  }
+
+  @media (max-width: 800px) {
+    h1 {
+      font-size: 50px;
+      line-height: 65px;
+    }
+  }
+  @media (max-width: 600px) {
+    h1 {
+      font-size: 35px;
+      line-height: 45px;
+    }
+  }
+  @media (max-width: 400px) {
+    h1 {
+      font-size: 25px;
+      line-height: 35px;
+    }
   }
 `;

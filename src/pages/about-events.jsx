@@ -142,6 +142,8 @@ const Container = styled.div`
 
         p {
           width: 40.5rem;
+          max-width: 95%;
+          white-space: wrap;
         }
 
         textarea {

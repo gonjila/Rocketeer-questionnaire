@@ -139,12 +139,12 @@ const Container = styled.div`
 
   .lightSide {
     .title {
-      width: 716px;
-      margin-bottom: 130px;
+      width: 44.5rem;
+      margin-bottom: 8rem;
     }
 
     form {
-      margin-bottom: 175px;
+      margin-bottom: 11rem;
 
       display: flex;
       flex-direction: column;
