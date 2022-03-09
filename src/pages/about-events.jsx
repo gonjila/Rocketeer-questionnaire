@@ -132,31 +132,31 @@ const Container = styled.div`
 
   .lightSide {
     .title {
-      margin-bottom: 127px;
+      margin-bottom: 128px;
     }
     form {
-      margin-bottom: 85px;
+      margin-bottom: 5.5rem;
 
       div {
-        margin-bottom: 35px;
+        margin-bottom: 2.5rem;
 
         p {
-          width: 645px;
+          width: 40.5rem;
         }
 
         textarea {
           width: 100%;
-          height: 122px;
-          padding: 20px 24px;
+          height: 7.625rem;
+          padding: 1.25rem 1.5rem;
           outline: none;
           resize: none;
 
           font-family: Montserrat;
-          font-size: 13px;
-          line-height: 16px;
+          font-size: 0.875rem;
+          line-height: 1rem;
         }
         #specialArea {
-          height: 90px;
+          height: 5.5rem;
         }
       }
     }

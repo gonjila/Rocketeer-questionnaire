@@ -208,14 +208,14 @@ const Container = styled.div`
 
   .lightSide {
     .title {
-      margin-bottom: 65px;
+      margin-bottom: 4rem;
     }
 
     form {
-      margin-bottom: 140px;
+      margin-bottom: 8.75rem;
 
       div {
-        margin-bottom: 50px;
+        margin-bottom: 3.125rem;
       }
       .inputErrorWrapper {
         p {
@@ -224,7 +224,8 @@ const Container = styled.div`
       }
       .radiosWrapper {
         p {
-          width: 645px;
+          width: 40.5rem;
+          /* max-width: 95%; */
         }
       }
     }

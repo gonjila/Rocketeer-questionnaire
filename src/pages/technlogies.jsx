@@ -66,6 +66,7 @@ function TechnologiesPage() {
               className={errors.experience ? "input invalidInput" : "input"}
               type="number"
               min={0.5}
+              step={0.5}
               placeholder="Experience Duration in Years"
               {...register("experience", {
                 required: "* Experience is required",
@@ -121,11 +122,11 @@ const Container = styled.div`
 
   .lightSide {
     .title {
-      margin-bottom: 120px;
+      margin-bottom: 7.5rem;
     }
 
     form {
-      margin-bottom: 55px;
+      margin-bottom: 3.55rem;
       display: flex;
       flex-direction: column;
 
@@ -133,7 +134,7 @@ const Container = styled.div`
         appearance: none;
         -moz-appearance: none;
         -webkit-appearence: none;
-        background: url("/images/redVector.svg") no-repeat calc(100% - 20px)
+        background: url("/images/redVector.svg") no-repeat calc(100% - 1.25rem)
           center;
       }
 
@@ -142,31 +143,31 @@ const Container = styled.div`
         text-align: end;
 
         .addLanguages {
-          width: 201px;
-          height: 32px;
+          width: 12.5625rem;
+          height: 2rem;
           background-color: var(--redberryRed);
           color: #fff;
           font-family: Montserrat;
-          font-size: 12px;
-          line-height: 15px;
+          font-size: 0.75rem;
+          line-height: 0.9375rem;
         }
       }
     }
 
     .skillsWrapper {
-      height: 300px;
-      margin: 0 0 160px 15px;
+      height: 18.75rem;
+      margin: 0 0 10rem 0;
       overflow-y: auto;
 
       display: flex;
       flex-direction: column;
 
       .choosenSkill {
-        width: 447px;
-        min-height: 48px;
-        padding: 0 16px;
-        border: 1px solid var(--primaryStroke);
-        margin-bottom: 16px;
+        width: 30rem;
+        min-height: 3rem;
+        padding: 0 1rem;
+        border: 0.0625rem solid var(--primaryStroke);
+        margin-bottom: 1rem;
 
         display: flex;
         justify-content: space-between;
@@ -175,12 +176,12 @@ const Container = styled.div`
         div {
           font-family: Montserrat;
           font-style: italic;
-          font-size: 14px;
-          line-height: 17px;
+          font-size: 0.875rem;
+          line-height: 1.0625rem;
         }
         button {
-          width: 20px;
-          height: 20px;
+          width: 1.25rem;
+          height: 1.25rem;
           background-color: transparent;
           border: none;
           cursor: pointer;
