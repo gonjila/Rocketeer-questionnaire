@@ -29,34 +29,34 @@ const Container = styled.div`
 
   h1 {
     color: var(--redberryRed);
-    margin: 0 0 105px;
+    margin: 0 0 6.5625rem;
 
     font-family: Rowdies;
-    font-size: 96px;
-    line-height: 119px;
+    font-size: 6rem;
+    line-height: 7.4375rem;
   }
   a {
     font-family: Montserrat;
-    font-size: 24px;
-    line-height: 29px;
+    font-size: 1.5rem;
+    line-height: 1.8125rem;
     color: #fff;
     cursor: pointer;
     z-index: 10;
   }
   #toPersonalInformation {
-    margin-bottom: 18px;
+    margin-bottom: 1.125rem;
 
     button {
-      width: 395px;
-      height: 79px;
+      width: 24.6875rem;
+      height: 4.9375rem;
     }
   }
   #toApplications {
     text-decoration: underline;
   }
   img {
-    width: 409.92px;
-    height: 372.45px;
+    width: 25.625rem;
+    height: 23.2781rem;
     transform: rotate(27.28deg);
   }
 `;
