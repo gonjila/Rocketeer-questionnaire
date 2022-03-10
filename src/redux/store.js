@@ -2,7 +2,7 @@ import { createStore, applyMiddleware } from "redux";
 
 import { reducer } from "./reducers";
 import {
-  // MIDDLE_LOGGER,
+  MIDDLE_LOGGER,
   MIDDLE_IDENTITY,
   MIDDLE_SKILL,
   MIDDLE_COVID,
@@ -10,7 +10,7 @@ import {
 } from "./middlewares";
 
 const middlewares = [
-  // MIDDLE_LOGGER,
+  MIDDLE_LOGGER,
   MIDDLE_IDENTITY,
   MIDDLE_SKILL,
   MIDDLE_COVID,

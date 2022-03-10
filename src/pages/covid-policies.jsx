@@ -24,7 +24,7 @@ function CovidPage() {
   const {
     handleSubmit,
     register,
-    formState: { errors },
+    formState: { errors, isValid },
   } = useForm();
 
   const onFormSubmit = data => {
@@ -183,7 +183,7 @@ function CovidPage() {
           </div>
         </form>
 
-        <DotsOfPages formRef={formRef} />
+        <DotsOfPages formRef={formRef} isValid={isValid} />
       </div>
 
       <div className="darkSide">

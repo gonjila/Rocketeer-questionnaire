@@ -23,7 +23,7 @@ function AboutEventsPage() {
   const {
     handleSubmit,
     register,
-    formState: { errors },
+    formState: { errors, isValid },
   } = useForm();
 
   const onFormSubmit = data => {
@@ -106,7 +106,7 @@ function AboutEventsPage() {
           </div>
         </form>
 
-        <DotsOfPages formRef={formRef} />
+        <DotsOfPages formRef={formRef} isValid={isValid} />
       </div>
       <div className="darkSide">
         <DarkComponent title="Redberrian Insights">

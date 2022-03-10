@@ -98,7 +98,10 @@ function TechnologiesPage() {
             : "Add skill!"}
         </div>
 
-        <DotsOfPages skillsAmount={skillsSelector?.length} />
+        <DotsOfPages
+          skillsAmount={skillsSelector?.length}
+          isValid={skillsSelector?.length !== 0}
+        />
       </div>
 
       <div className="darkSide">

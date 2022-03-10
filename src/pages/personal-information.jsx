@@ -19,7 +19,7 @@ function PersonalInformationPage() {
   const {
     handleSubmit,
     register,
-    formState: { errors },
+    formState: { errors, isValid },
   } = useForm();
 
   const onFormSubmit = data => {
@@ -104,7 +104,7 @@ function PersonalInformationPage() {
               {...register("phone", {
                 required: false,
                 pattern: {
-                  value: /^\+[1-9]{3}[0-9]{9}$/g,
+                  value: /^\+995[0-9]{9}$/g,
                   message:
                     "* Enter the phone number in the correct format (+995555555555)",
                 },
@@ -116,7 +116,7 @@ function PersonalInformationPage() {
           </div>
         </form>
 
-        <DotsOfPages formRef={formRef} />
+        <DotsOfPages formRef={formRef} isValid={isValid} />
       </div>
 
       <div className="darkSide">

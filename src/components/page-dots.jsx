@@ -6,7 +6,7 @@ import styled from "styled-components";
 
 import routes from "../utils/routes";
 
-function DotsOfPages({ formRef, skillsAmount }) {
+function DotsOfPages({ formRef, skillsAmount, isValid }) {
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -54,7 +54,11 @@ function DotsOfPages({ formRef, skillsAmount }) {
       <Link to="/about-events" className={dotsClassname(4)} />
       <Link to="/submitter" className={dotsClassname(5)} />
 
-      <button form={formRef?.current?.id} onClick={onNextArrow}>
+      <button
+        form={formRef?.current?.id}
+        style={isValid ? {} : { opacity: 0.8 }}
+        onClick={onNextArrow}
+      >
         <img src="/images/Next.svg" alt="right arrow" />
       </button>
     </Container>
