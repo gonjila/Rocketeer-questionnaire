@@ -70,9 +70,9 @@ const Container = styled.div`
 
   a,
   button {
-    width: 19px;
-    height: 19px;
-    margin: 0 15px;
+    width: 1.1875rem;
+    height: 1.1875rem;
+    margin: 0 0.9375rem;
     cursor: pointer;
 
     display: flex;

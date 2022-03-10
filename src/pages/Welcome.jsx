@@ -29,34 +29,89 @@ const Container = styled.div`
 
   h1 {
     color: var(--redberryRed);
-    margin: 0 0 105px;
+    margin: 0 0 6.5625rem;
 
     font-family: Rowdies;
-    font-size: 96px;
-    line-height: 119px;
+    font-size: 6rem;
+    line-height: 7.4375rem;
   }
   a {
     font-family: Montserrat;
-    font-size: 24px;
-    line-height: 29px;
+    font-size: 1.5rem;
+    line-height: 1.8125rem;
     color: #fff;
     cursor: pointer;
     z-index: 10;
   }
   #toPersonalInformation {
-    margin-bottom: 18px;
+    margin-bottom: 1.125rem;
 
     button {
-      width: 395px;
-      height: 79px;
+      width: 24.5rem;
+      height: 5rem;
     }
   }
   #toApplications {
-    text-decoration: underline;
+    /* text-decoration: underline; */
   }
   img {
-    width: 409.92px;
-    height: 372.45px;
+    width: 25.625rem;
+    height: 23.2781rem;
     transform: rotate(27.28deg);
+  }
+
+  @media (max-width: 800px) {
+    h1 {
+      font-size: 50px;
+      margin-bottom: 65px;
+    }
+    a {
+      font-size: 15px;
+      line-height: 18px;
+    }
+    #toPersonalInformation {
+      margin-bottom: 10px;
+
+      button {
+        font-size: 15px;
+        line-height: 18px;
+        width: 245px;
+        height: 50px;
+      }
+    }
+    img {
+      width: 256px;
+      height: 232px;
+    }
+  }
+  @media (max-width: 550px) {
+    h1 {
+      font-size: 40px;
+      margin-bottom: 45px;
+    }
+  }
+  @media (max-width: 430px) {
+    h1 {
+      font-size: 30px;
+      margin-bottom: 0px;
+    }
+    a {
+      font-size: 12px;
+      line-height: 14px;
+    }
+    #toPersonalInformation {
+      margin-bottom: 10px;
+
+      button {
+        font-size: 12px;
+        line-height: 14px;
+        width: 200px;
+        height: 40px;
+      }
+    }
+    img {
+      width: 224px;
+      height: 192px;
+    }
   }
 `;

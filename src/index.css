@@ -2,7 +2,7 @@
 
 :root {
   --redberryRed: #fe3b1f;
-  --primaryBg: radial-gradient(50% 50% at 50% 50%, #0c0d0e 0%, #151718 73.44%);
+  --primaryBg: radial-gradient(50% 50% at 50% 50%, #0c0d0e 0%, #151718 73.5%);
   --primaryStroke: #525557;
   --primaryRed: #eb3535;
 }
@@ -22,10 +22,11 @@ body {
 .page {
   width: 100%;
   min-height: 100vh;
+  display: flex;
 }
 .page > .lightSide {
   width: 50%;
-  padding: 65px 0;
+  padding: 4rem 0;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -33,70 +34,72 @@ body {
 }
 .page > .darkSide {
   width: 50%;
-  padding: 65px 0;
+  padding: 4rem 0;
   background-image: var(--primaryBg);
 }
 
 .title {
-  width: 788px;
+  width: 49rem;
+  max-width: 95%;
   margin: 0;
   text-align: center;
 
   color: var(--redberryRed);
   font-family: Rowdies;
   font-weight: 400;
-  font-size: 64px;
-  line-height: 79px;
+  font-size: 4rem;
+  line-height: 5rem;
 }
 
 .redberryBtn {
   background-color: var(--redberryRed);
-  border-radius: 50px;
+  border-radius: 3.125rem;
   border: none;
   cursor: pointer;
 
   color: #fff;
   font-family: Montserrat;
-  font-size: 24px;
-  line-height: 29px;
+  font-size: 1.5rem;
+  line-height: 1.8125rem;
+}
+
+form {
+  max-width: 95%;
 }
 
 .inputErrorWrapper {
-  /* position: relative; */
   display: flex;
   flex-direction: column;
 }
 .inputErrorWrapper:not(:last-child) {
-  margin-bottom: 35px;
+  margin-bottom: 2.1875rem;
 }
 input[type="radio"] {
   accent-color: var(--primaryRed);
 }
 .input {
-  width: 455px;
-  height: 54px;
-  padding: 15px 20px 15px 55px;
-  border: 1px solid var(--primaryStroke);
+  width: 30rem;
+  height: 3.5rem;
+  padding: 1rem 1.25rem 1rem 3.5rem;
+  border: 0.0625rem solid var(--primaryStroke);
   outline: none;
 
   color: #454545;
   font-family: Montserrat;
   font-style: italic;
-  font-size: 14px;
-  line-height: 17px;
+  font-size: 0.875rem;
+  line-height: 1.0625rem;
 }
 .invalidInput {
-  border: 1px solid var(--redberryRed);
+  border: 0.0625rem solid var(--redberryRed);
 }
 .inputError {
-  margin: 5px 0 0 55px;
+  margin: 0.3125rem 0 0 3.4375rem;
   text-align: left;
   color: var(--redberryRed);
   font-style: italic;
-  font-size: 11px;
-  line-height: 13px;
-  /* position: absolute;
-  bottom: -20px; */
+  font-size: 0.6875rem;
+  line-height: 0.8125rem;
 }
 
 .radiosWrapper {
@@ -105,16 +108,54 @@ input[type="radio"] {
   align-items: flex-start;
 }
 .radiosWrapper > p {
-  width: 447px;
-  margin: 0 0 24px;
+  max-width: 28rem;
+  margin: 0 0 1.5rem;
 
   font-family: Montserrat;
-  font-size: 18px;
-  line-height: 22px;
+  font-size: 1.125rem;
+  line-height: 1.375rem;
 }
 .radiosWrapper > label {
-  margin-left: 10px;
+  margin-left: 0.625rem;
 }
 .radiosWrapper > label:not(:last-child) {
-  margin-bottom: 16px;
+  margin-bottom: 1rem;
+}
+
+@media (max-width: 1400px) {
+  :root {
+    font-size: 14px;
+  }
+  .title {
+    max-width: 90%;
+  }
+}
+@media (max-width: 1200px) {
+  :root {
+    font-size: 12px;
+  }
+}
+@media (max-width: 1000px) {
+  :root {
+    font-size: 10px;
+  }
+}
+@media (max-width: 800px) {
+  :root {
+    font-size: 14px;
+  }
+  .page {
+    flex-direction: column;
+  }
+  .page > .lightSide {
+    width: 100%;
+  }
+  .page > .darkSide {
+    width: 100%;
+  }
+}
+@media (max-width: 550px) {
+  :root {
+    font-size: 12px;
+  }
 }

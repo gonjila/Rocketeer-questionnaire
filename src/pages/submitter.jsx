@@ -13,7 +13,7 @@ function SubmitterPage() {
 
   // TODO თუ რომელიმე გვერდზე სავალდებულო პასუხები არაა შევსებული გადაამისამართოს მანდ.
   return (
-    <Container>
+    <Container className="page">
       <Link to="/gratitude">
         <button className="redberryBtn" onClick={onSubmitClick}>
           Submit
@@ -29,30 +29,50 @@ function SubmitterPage() {
 export default SubmitterPage;
 
 const Container = styled.div`
-  width: 100vw;
-  height: 100vh;
   background-image: var(--primaryBg);
 
-  display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 
   .redberryBtn {
-    width: 395px;
-    height: 79px;
-    margin-bottom: 35px;
+    width: 24.5rem;
+    height: 5rem;
+    margin-bottom: 2.1875rem;
   }
 
   .toBack {
-    width: 190px;
-    height: 50px;
+    width: 12rem;
+    height: 48px;
     text-align: center;
 
     color: #fff;
     font-family: Montserrat;
     font-weight: normal;
-    font-size: 28px;
-    line-height: 34px;
+    font-size: 1.75rem;
+    line-height: 32px;
+  }
+
+  @media (max-width: 800px) {
+    .redberryBtn {
+      font-size: 16px;
+      width: 245px;
+      height: 50px;
+      margin-bottom: 20px;
+    }
+    .toBack {
+      font-size: 16px;
+    }
+  }
+  @media (max-width: 550px) {
+    .redberryBtn {
+      font-size: 14px;
+      width: 200px;
+      height: 40px;
+      margin-bottom: 15px;
+    }
+    .toBack {
+      font-size: 14px;
+    }
   }
 `;

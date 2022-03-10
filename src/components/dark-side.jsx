@@ -21,17 +21,19 @@ const Container = styled.div`
   justify-content: space-between;
 
   .title {
-    margin-bottom: 100px;
+    /* width: 95%; */
+    margin-bottom: 6.25rem;
   }
 
   .child {
-    width: 705px;
-    height: 605px;
+    width: 700px;
+    max-width: 95%;
+    /* height: 38rem; */
 
     font-family: Montserrat;
     font-style: normal;
     font-weight: normal;
-    font-size: 24px;
+    font-size: 1.5rem;
     line-height: 200%;
 
     display: flex;

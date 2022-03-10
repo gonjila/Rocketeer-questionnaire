@@ -52,8 +52,8 @@ function ApplicationsPage() {
                 <div
                   style={
                     openedDetails === index
-                      ? {}
-                      : { transform: "rotate(180deg)" }
+                      ? { transform: "rotate(180deg)" }
+                      : {}
                   }
                 >
                   <img src="/images/whiteVector.svg" alt="arrow" />
@@ -67,11 +67,11 @@ function ApplicationsPage() {
                 <div className="answersComponent personalInformation">
                   <h3>Personal Information</h3>
                   <div>
-                    <p>First Name</p>
+                    <p>First Name:</p>
                     <p>{data.first_name}</p>
                   </div>
                   <div>
-                    <p>Last Name</p>
+                    <p>Last Name:</p>
                     <p>{data.last_name}</p>
                   </div>
                   <div>
@@ -112,7 +112,7 @@ const Container = styled.div`
   width: 100%;
   min-height: 100vh;
   background-image: var(--primaryBg);
-  padding: 15px 350px;
+  padding: 1rem 16vw;
 
   display: flex;
   flex-direction: column;
@@ -120,25 +120,26 @@ const Container = styled.div`
   justify-content: flex-start;
 
   .applicationsTitle {
-    margin: 80px 0 55px;
+    margin: 5rem 0 3.4375rem;
+    text-align: center;
 
     color: #fff;
     font-family: Rowdies;
     font-weight: bold;
-    font-size: 56px;
-    line-height: 70px;
+    font-size: 3.5rem;
+    line-height: 4.375rem;
   }
 
   #resultsWrapper {
     width: 100%;
 
     .applicationResult {
-      margin-bottom: 20px;
+      margin-bottom: 1.25rem;
 
       .resultHead {
         width: 100%;
-        height: 52px;
-        padding: 0 30px;
+        height: 3.25rem;
+        padding: 0 1.875rem;
         background-color: var(--redberryRed);
         border: none;
 
@@ -147,12 +148,11 @@ const Container = styled.div`
         justify-content: space-between;
 
         color: #fff;
-        font-size: 14px;
-        line-height: 17px;
+        font-size: 0.875rem;
+        line-height: 1.0625rem;
       }
 
       .resultBody {
-        width: 100%;
         padding: 0 13%;
         background: #fff;
 
@@ -160,23 +160,25 @@ const Container = styled.div`
         grid-template-columns: repeat(2, 1fr);
 
         .answersComponent {
-          margin: 10px 20px;
+          margin: 0.625rem 1.25rem;
 
           h3 {
+            max-width: 100%;
             color: var(--redberryRed);
             font-style: italic;
-            font-size: 18px;
-            line-height: 22px;
+            font-size: 1.125rem;
+            line-height: 1.375rem;
             text-decoration: underline;
           }
 
           div {
-            margin-bottom: 40px;
+            margin-bottom: 2.5rem;
 
             textarea {
-              width: 447px;
-              height: 122px;
-              padding: 20px 24px;
+              /* max-width: 27.9375rem; */
+              width: 100%;
+              height: 7.625rem;
+              padding: 1.25rem 1.5rem;
               resize: none;
             }
           }
@@ -188,11 +190,11 @@ const Container = styled.div`
 
             p {
               font-style: italic;
-              font-size: 12px;
-              line-height: 15px;
+              font-size: 0.75rem;
+              line-height: 0.9375rem;
 
               &:first-child {
-                width: 102px;
+                width: 30%;
               }
             }
           }
@@ -204,16 +206,22 @@ const Container = styled.div`
 
             p {
               font-style: italic;
-              font-size: 14px;
-              line-height: 17px;
+              font-size: 0.875rem;
+              line-height: 1.0625rem;
 
               &:first-child {
-                width: 80px;
+                width: 15%;
               }
             }
           }
         }
       }
+    }
+  }
+
+  @media (max-width: 800px) {
+    .resultBody {
+      grid-template-columns: repeat(1, 1fr) !important;
     }
   }
 `;

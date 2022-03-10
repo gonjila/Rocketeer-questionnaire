@@ -1,8 +1,8 @@
-import React from "react";
+import styled from "styled-components";
 
 function CovidSituation({ data }) {
   return (
-    <div className="answersComponent covidSituation">
+    <Container className="answersComponent covidSituation">
       <h3>Covid Situation</h3>
 
       <div className="radiosWrapper">
@@ -76,8 +76,14 @@ function CovidSituation({ data }) {
           readOnly
         />
       </div>
-    </div>
+    </Container>
   );
 }
 
 export default CovidSituation;
+
+const Container = styled.div`
+  .input {
+    width: 100%;
+  }
+`;
