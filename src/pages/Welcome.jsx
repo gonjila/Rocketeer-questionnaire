@@ -58,6 +58,28 @@ const Container = styled.div`
     width: 25.625rem;
     height: 23.2781rem;
     transform: rotate(27.28deg);
+    animation: yourAnimation 10s ease-in 0s infinite normal none;
+  }
+
+  @keyframes yourAnimation {
+    0.0% {
+      transform: rotate(0deg) scale(1) translate(0px, 0px);
+    }
+    100% {
+      transform: scale(1) rotate(0deg) translate(0px, 0px);
+    }
+    19.6% {
+      transform: scale(1.1) translate(-10px, 10px);
+    }
+    39.7% {
+      transform: rotate(15deg) translate(10px, 10px);
+    }
+    59.7% {
+      transform: scale(0.9) translate(-10px, -10px);
+    }
+    80.4% {
+      transform: rotate(-15deg) translate(10px, -10px);
+    }
   }
 
   @media (max-width: 800px) {
